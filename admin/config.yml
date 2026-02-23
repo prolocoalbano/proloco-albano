@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: TUO-USERNAME/NOME-REPO # Sostituisci con i tuoi dati!
+  repo: prolocoalbano/proloco-albano # Sostituisci con i tuoi dati!
   branch: main
 
 media_folder: "images" # Qui verranno salvate le foto che caricherai
