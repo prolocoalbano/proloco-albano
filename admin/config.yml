@@ -1,9 +1,8 @@
 backend:
   name: github
-  repo: prolocoalbano/proloco-albano # Esempio: mario-rossi/sito-proloco
+  repo: prolocoalbano/proloco-albano
   branch: main
 
-display_url: https://www.prolocoalbanodilucania.it
 media_folder: "images"
 public_folder: "/images"
 
@@ -15,5 +14,5 @@ collections:
         label: "Home Page"
         name: "home"
         fields:
-          - {label: "Titolo", name: "titolo", widget: "string"}
+          - {label: "Titolo Principale", name: "titolo", widget: "string"}
           - {label: "Descrizione", name: "descrizione", widget: "text"}
