@@ -1,4 +1,9 @@
 {
-  "titolo": "Benvenuti ad Albano di Lucania",
-  "descrizione": "Sito ufficiale della Pro Loco"
+  "nomeProLoco": "Pro Loco Albano di Lucania",
+  "heroTitolo": "Benvenuti ad Albano di Lucania",
+  "heroSottotitolo": "Scopri la magia del borgo tra le rocce e le tradizioni della Basilicata.",
+  "chiSiamoTitolo": "La Nostra Associazione",
+  "chiSiamoTesto": "La Pro Loco di Albano di Lucania lavora ogni giorno per valorizzare il patrimonio storico, culturale e naturale del nostro splendido comune.",
+  "emailContatto": "info@prolocoalbanodilucania.it",
+  "colorePrincipale": "#b01c1c"
 }
