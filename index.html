@@ -3,58 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="tab-title">Caricamento...</title>
+    <title id="tab-title">Pro Loco Albano di Lucania</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root { --primary-color: #b01c1c; }
-        body { font-family: 'Segoe UI', sans-serif; opacity: 0; transition: opacity 0.5s; }
+        body { font-family: sans-serif; transition: opacity 0.5s; }
         .hero-section {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1200&auto=format&fit=crop');
-            background-size: cover; background-position: center; height: 70vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1200&auto=format&fit=crop');
+            background-size: cover; background-position: center; height: 60vh;
             display: flex; align-items: center; justify-content: center; color: white; text-align: center;
         }
-        .btn-proloco { background-color: var(--primary-color); color: white; border-radius: 30px; padding: 10px 25px; text-decoration: none; }
+        .btn-proloco { background-color: var(--primary-color); color: white; border-radius: 30px; padding: 12px 30px; text-decoration: none; display: inline-block; }
     </style>
 </head>
 <body>
 
 <nav class="navbar navbar-light bg-white shadow-sm">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="#" id="nav-brand">...</a>
+        <span class="navbar-brand fw-bold" id="nav-brand">Pro Loco</span>
     </div>
 </nav>
 
 <section class="hero-section">
     <div class="container">
-        <h1 class="display-3 fw-bold" id="hero-titolo">...</h1>
-        <p class="lead" id="hero-sottotitolo">...</p>
-        <a href="#contatti" class="btn btn-proloco mt-3">Contattaci</a>
+        <h1 class="display-4 fw-bold" id="hero-titolo">Caricamento...</h1>
+        <p class="lead" id="hero-sottotitolo">Attendere prego...</p>
+        <a href="#contatti" class="btn-proloco mt-3">Contattaci</a>
     </div>
 </section>
 
 <section class="container my-5 py-5">
     <div class="row align-items-center">
         <div class="col-md-6">
-            <h2 class="fw-bold" id="chi-siamo-titolo">...</h2>
+            <h2 class="fw-bold" id="chi-siamo-titolo">Chi Siamo</h2>
             <p id="chi-siamo-testo">...</p>
         </div>
         <div class="col-md-6 text-center">
-            <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=800&auto=format&fit=crop" class="img-fluid rounded shadow">
+            <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=800&auto=format&fit=crop" class="img-fluid rounded shadow" alt="Immagine Borgo">
         </div>
     </div>
 </section>
 
-<footer class="py-5 bg-light text-center" id="contatti">
-    <p id="footer-text">...</p>
-    <p>Email: <strong id="contatto-mail">...</strong></p>
+<footer class="py-5 bg-dark text-white text-center" id="contatti">
+    <div class="container">
+        <p id="footer-text">© 2026 Pro Loco Albano di Lucania</p>
+        <p>Email: <strong id="contatto-mail">...</strong></p>
+    </div>
 </footer>
 
 <script>
-    // Questo script "legge" il file contenuti.json e aggiorna il sito
-    fetch('contenuti.json')
-        .then(response => response.json())
+    // Caricamento dati dal file JSON
+    fetch('./contenuti.json')
+        .then(response => {
+            if (!response.ok) throw new Error("File JSON non trovato");
+            return response.json();
+        })
         .then(data => {
-            document.getElementById('tab-title').innerText = data.nomeProLoco;
+            document.title = data.nomeProLoco;
             document.getElementById('nav-brand').innerText = data.nomeProLoco;
             document.getElementById('hero-titolo').innerText = data.heroTitolo;
             document.getElementById('hero-sottotitolo').innerText = data.heroSottotitolo;
@@ -62,9 +67,12 @@
             document.getElementById('chi-siamo-testo').innerText = data.chiSiamoTesto;
             document.getElementById('contatto-mail').innerText = data.emailContatto;
             document.getElementById('footer-text').innerText = "© 2026 " + data.nomeProLoco;
-            
-            document.body.style.opacity = 1; // Mostra il sito una volta caricato
+        })
+        .catch(error => {
+            console.error("Errore:", error);
+            document.getElementById('hero-titolo').innerText = "Benvenuti";
         });
 </script>
+
 </body>
 </html>
