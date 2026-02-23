@@ -1,1 +1,20 @@
+backend:
+  name: github
+  repo: TUO-USERNAME/NOME-REPO # Sostituisci con i tuoi dati!
+  branch: main
 
+media_folder: "images" # Qui verranno salvate le foto che caricherai
+public_folder: "/images"
+
+collections:
+  - name: "pagine"
+    label: "Pagine del Sito"
+    files:
+      - file: "contenuti.json"
+        label: "Home Page"
+        name: "home"
+        fields:
+          - {label: "Titolo Principale", name: "titolo", widget: "string"}
+          - {label: "Sottotitolo", name: "sottotitolo", widget: "text"}
+          - {label: "Testo Chi Siamo", name: "chi_siamo", widget: "markdown"}
+          - {label: "Immagine Copertina", name: "immagine", widget: "image"}
