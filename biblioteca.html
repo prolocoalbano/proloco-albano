@@ -1,1 +1,65 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca - Pro Loco Albano di Lucania</title>
+    <style>
+        :root { --primary: #b01c1c; --dark: #2c3e50; }
+        body { font-family: sans-serif; margin: 0; padding: 20px; background: #f4f4f4; }
+        nav { background: white; padding: 15px; margin: -20px -20px 20px -20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        nav a { text-decoration: none; color: var(--dark); font-weight: bold; margin: 0 15px; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 8px; }
+        h1 { color: var(--primary); text-align: center; }
+        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background: var(--primary); color: white; }
+        tr:nth-child(even) { background: #f9f9f9; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="biblioteca.html">Biblioteca</a>
+</nav>
+
+<div class="container">
+    <h1>Catalogo Libri</h1>
+    <p>Cerca tra i volumi della nostra biblioteca sociale:</p>
+    <input type="text" id="filtro" placeholder="Scrivi titolo o autore..." onkeyup="filtra()">
+    
+    <table id="tabella">
+        <thead>
+            <tr><th>Titolo</th><th>Autore</th><th>Genere</th></tr>
+        </thead>
+        <tbody id="corpo">
+            </tbody>
+    </table>
+</div>
+
+<script>
+    const libri = [
+        { t: "Storia di Albano", a: "G. Rossi", g: "Storia" },
+        { t: "Le Dolomiti Lucane", a: "M. Bianchi", g: "Natura" },
+        { t: "Riti e Magia", a: "A. Verdi", g: "Tradizioni" }
+    ];
+
+    function mostra(dati) {
+        document.getElementById('corpo').innerHTML = dati.map(l => 
+            `<tr><td>${l.t}</td><td>${l.a}</td><td>${l.g}</td></tr>`
+        ).join('');
+    }
+
+    function filtra() {
+        const val = document.getElementById('filtro').value.toLowerCase();
+        const filtrati = libri.filter(l => l.t.toLowerCase().includes(val) || l.a.toLowerCase().includes(val));
+        mostra(filtrati);
+    }
+
+    window.onload = () => mostra(libri);
+</script>
+</body>
+</html>
 
