@@ -3,72 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="tab-title">Pro Loco Albano di Lucania</title>
+    <title>Pro Loco Albano di Lucania</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root { --primary-color: #b01c1c; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
-        
-        /* Navbar centrata */
-        .navbar-brand { 
-            line-height: 1.2; 
-            font-size: 1.1rem; 
-            white-space: normal; 
-            text-align: center; 
-            display: block; 
-            width: 100%; 
-            margin: 0;
-            font-weight: bold;
-        }
-
-        /* Sezione Hero (Sfondo in alto) */
-        .hero-section {
-            background-size: cover; 
-            background-position: center; 
-            height: 65vh;
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            color: white; 
-            text-align: center;
-            position: relative;
-        }
-
-        .btn-proloco { 
-            background-color: var(--primary-color); 
-            color: white; 
-            border-radius: 30px; 
-            padding: 12px 35px; 
-            text-decoration: none; 
-            display: inline-block;
-            font-weight: bold;
-            transition: transform 0.3s;
-        }
-        .btn-proloco:hover { transform: scale(1.05); color: white; }
-
-        /* Immagine centrale */
-        .img-main {
-            width: 100%;
-            max-width: 800px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
+        .navbar-brand { text-align: center; display: block; width: 100%; font-weight: bold; }
+        .hero-section { background-size: cover; background-position: center; height: 60vh; display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
     </style>
 </head>
 <body>
 
 <nav class="navbar navbar-light bg-white shadow-sm py-3">
-    <div class="container d-flex justify-content-center">
-        <span class="navbar-brand" id="nav-brand">Caricamento...</span>
+    <div class="container text-center">
+        <span class="navbar-brand" id="nav-brand">Caricamento in corso...</span>
     </div>
 </nav>
 
 <section class="hero-section" id="hero-bg">
     <div class="container">
-        <h1 class="display-3 fw-bold" id="hero-titolo">...</h1>
-        <p class="lead fs-3" id="hero-sottotitolo">...</p>
-        <a href="#contatti" class="btn-proloco mt-3 shadow">Contattaci</a>
+        <h1 id="hero-titolo"></h1>
+        <p class="lead" id="hero-sottotitolo"></p>
     </div>
 </section>
 
-<section class="
+<script>
+    // Carichiamo il file con un trucco per ignorare la vecchia memoria
+    fetch('./contenuti.json?nocache=' + new Date().getTime())
+        .then(response => {
+            if (!response.ok) throw new Error("File contenuti.json non trovato o errato");
+            return response.json();
+        })
+        .then(data => {
+            document.getElementById('nav-brand').innerHTML = data.nomeProLoco;
+            document.getElementById('hero-titolo').innerText = data.heroTitolo;
+            document.getElementById('hero-sottotitolo').innerText = data.heroSottotitolo;
+            document.getElementById('hero-bg').style.backgroundImage = "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('" + data.fotoSfondo + "')";
+            document.body.style.opacity = 1;
+        })
+        .catch(error => {
+            document.getElementById('nav-brand').innerHTML = "ERRORE: Controlla il file contenuti.json";
+            console.error(error);
+        });
+</script>
+</body>
+</html>
