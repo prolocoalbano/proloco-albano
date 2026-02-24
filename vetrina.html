@@ -9,16 +9,24 @@
         :root { --primary-color: #b01c1c; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; overflow-x: hidden; }
         
-        /* Navbar */
-        .navbar-brand { text-align: center; display: block; width: 100%; font-weight: bold; line-height: 1.2; font-size: 1.2rem; }
+        /* Smooth Scroll */
+        html { scroll-behavior: smooth; }
+
+        /* Navbar Sticky */
+        .navbar { transition: all 0.3s; border-bottom: 1px solid #eee; }
+        .navbar-brand { font-weight: bold; line-height: 1.2; font-size: 1.1rem; color: var(--primary-color) !important; }
+        .nav-link { font-weight: 600; color: #444 !important; transition: 0.3s; margin: 0 5px; }
+        .nav-link:hover { color: var(--primary-color) !important; }
         
         /* Hero Section */
         .hero-section { 
             background-size: cover; background-position: center; height: 55vh; 
-            display: flex; align-items: center; justify-content: center; color: white; text-align: center; 
+            display: flex; align-items: center; justify-content: center; color: white; text-align: center;
+            margin-top: -1px;
         }
 
-        /* Titoli Sezioni */
+        /* Sezioni e Titoli */
+        section { scroll-margin-top: 80px; } /* Evita che il menu copra il titolo quando si clicca */
         .section-title { color: var(--primary-color); font-weight: bold; margin-bottom: 2rem; text-align: center; position: relative; padding-bottom: 15px; }
         .section-title::after { content: ''; width: 60px; height: 4px; background: var(--primary-color); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 2px; }
 
@@ -30,7 +38,7 @@
         .map-container { position: relative; padding-bottom: 50%; height: 0; overflow: hidden; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .map-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0; }
 
-        /* Modal per foto ingrandita */
+        /* Modal per foto */
         #photoModal { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); align-items: center; justify-content: center; padding: 20px; }
         #photoModal img { max-width: 100%; max-height: 90vh; border-radius: 8px; border: 3px solid white; }
         .close-modal { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; }
@@ -40,8 +48,22 @@
 </head>
 <body>
 
-<nav class="navbar navbar-light bg-white shadow-sm py-3">
-    <div class="container"><span class="navbar-brand" id="nav-brand">Caricamento vetrina...</span></div>
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-2">
+    <div class="container">
+        <a class="navbar-brand" href="#" id="nav-brand">Caricamento...</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#mission-sezione">Mission</a></li>
+                <li class="nav-item"><a class="nav-link" href="#biblio-sezione">Biblioteca</a></li>
+                <li class="nav-item"><a class="nav-link" href="#gallery-sezione">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="#mappa-sezione">Dove Siamo</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contatti">Contatti</a></li>
+            </ul>
+        </div>
+    </div>
 </nav>
 
 <section class="hero-section" id="hero-bg">
@@ -51,7 +73,7 @@
     </div>
 </section>
 
-<section class="container my-5 py-5">
+<section id="mission-sezione" class="container my-5 py-5">
     <h2 class="section-title" id="mission-titolo"></h2>
     <div class="row justify-content-center">
         <div class="col-md-9 text-center">
@@ -61,7 +83,7 @@
     </div>
 </section>
 
-<section class="bg-light py-5">
+<section id="biblio-sezione" class="bg-light py-5">
     <div class="container text-center">
         <h2 class="section-title" id="biblio-titolo"></h2>
         <div class="row justify-content-center">
@@ -73,42 +95,41 @@
     </div>
 </section>
 
-<section class="container my-5 py-5">
+<section id="gallery-sezione" class="container my-5 py-5">
     <h2 class="section-title" id="gallery-titolo"></h2>
     <div class="row g-3" id="gallery-container">
         </div>
 </section>
 
-<section class="container mb-5 pb-5 text-center">
+<section id="mappa-sezione" class="container mb-5 pb-5 text-center">
     <h2 class="section-title" id="mappa-titolo"></h2>
     <p class="lead mb-4" id="indirizzo-testo"></p>
     <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12143.433288122395!2d15.8756911!3d40.5833446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1339199d63c5d63b%3A0x6d901f4c7d0d1e0!2s85010%20Albano%20di%20Lucania%20PZ!5e0!3m2!1sit!2sit!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12143.518600127533!2d16.0354153!3d40.5847634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133903f698a96c4d%3A0x633d26279f16d25!2s85010%20Albano%20di%20Lucania%20PZ!5e0!3m2!1sit!2sit!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
     </div>
 </section>
 
-<footer class="py-5 bg-dark text-white text-center">
+<footer class="py-5 bg-dark text-white text-center" id="contatti">
     <div class="container">
         <p id="footer-text" class="mb-2"></p>
         <p>Email: <strong id="contatto-mail"></strong></p>
-        <p><small>Affiliata UNPLI</small></p>
+        <p><small class="text-muted">Affiliata UNPLI - APS iscritta al RUNTS</small></p>
     </div>
 </footer>
 
 <div id="photoModal" onclick="this.style.display='none'">
-    <span class="close-modal">&times;</span>
+    <span class="close-modal">×</span>
     <img id="modalImg" src="">
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    // Forza il caricamento del file JSON fresco
-    fetch('./contenuti-vetrina.json?nocache=' + new Date().getTime())
+    fetch('./contenuti-vetrina.json?v=' + new Date().getTime())
         .then(response => {
-            if (!response.ok) throw new Error("Impossibile trovare contenuti-vetrina.json");
+            if (!response.ok) throw new Error("File contenuti-vetrina.json non trovato");
             return response.json();
         })
         .then(data => {
-            // Testi principali
             document.getElementById('nav-brand').innerHTML = data.nomeProLoco;
             document.getElementById('hero-titolo').innerText = data.heroTitolo;
             document.getElementById('hero-sottotitolo').innerText = data.heroSottotitolo;
@@ -122,18 +143,13 @@
             document.getElementById('contatto-mail').innerText = data.emailContatto;
             document.getElementById('footer-text').innerHTML = "© 2026 " + data.nomeProLoco;
             
-            // Colore dinamico
             document.documentElement.style.setProperty('--primary-color', data.coloreSito);
-            
-            // Immagini principali
             document.getElementById('hero-bg').style.backgroundImage = "linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('./" + data.fotoSfondo + "')";
             document.getElementById('chi-siamo-img').src = "./" + data.fotoCentrale;
 
-            // Generazione Badge Attività
             const lista = data.sezioneAttivitaElenco.split(',');
             document.getElementById('attivita-lista').innerHTML = lista.map(item => `<span class="badge-attivita shadow-sm">${item.trim()}</span>`).join('');
 
-            // Generazione Gallery
             const galleryBox = document.getElementById('gallery-container');
             galleryBox.innerHTML = ''; 
             data.fotoGallery.forEach(file => {
