@@ -52,10 +52,9 @@
 </footer>
 
 <script>
-    fetch('./contenuti.json')
+    fetch('./contenuti.json?v=' + Date.now()) // Il Date.now evita la vecchia memoria (cache)
         .then(response => response.json())
         .then(data => {
-            // Testi
             document.title = data.nomeProLoco.replace('<br>', ' ');
             document.getElementById('nav-brand').innerHTML = data.nomeProLoco;
             document.getElementById('hero-titolo').innerText = data.heroTitolo;
@@ -65,11 +64,17 @@
             document.getElementById('contatto-mail').innerText = data.emailContatto;
             document.getElementById('footer-text').innerHTML = "© 2026 " + data.nomeProLoco;
             
-            // Colori e Immagini (Il tuo Pannello WordPress)
             document.documentElement.style.setProperty('--primary-color', data.coloreSito);
-            document.getElementById('hero-bg').style.backgroundImage = "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('" + data.fotoSfondo + "')";
-            document.getElementById('chi-siamo-img').src = data.fotoCentrale;
-        });
+            
+            // Applichiamo le immagini con un percorso relativo sicuro
+            const bgElement = document.getElementById('hero-bg');
+            bgElement.style.backgroundImage = "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('./" + data.fotoSfondo + "')";
+            
+            const imgElement = document.getElementById('chi-siamo-img');
+            imgElement.src = "./" + data.fotoCentrale;
+        })
+        .catch(err => console.error("Errore caricamento dati:", err));
 </script>
+ 
 </body>
 </html>
