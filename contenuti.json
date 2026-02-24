@@ -1,9 +1,11 @@
 {
-  "nomeProLoco": "Associazione Turistica Pro Loco<br>di Albano di Lucania APS",
+  "nomeProLoco": "Associazione Turistica Pro Loco<br>di Albano di Lucania",
   "heroTitolo": "Sito in Costruzione",
-  "heroSottotitolo": "Il nuovo portale è in arrivo. Stiamo lavorando per raccontare al meglio il nostro territorio.",
+  "heroSottotitolo": "Il nuovo portale è in arrivo. Stiamo lavorando per voi.",
   "chiSiamoTitolo": "Prossimamente",
-  "chiSiamoTesto": "Stiamo preparando i contenuti per farvi scoprire la nostra storia e le nostre iniziative.",
+  "chiSiamoTesto": "Stiamo preparando i contenuti per farvi scoprire la nostra storia.",
   "emailContatto": "info@prolocoalbanodilucania.it",
-  "colorePrincipale": "#b01c1c"
+  "coloreSito": "#b01c1c",
+  "fotoSfondo": "foto-alto.jpg",
+  "fotoCentrale": "foto-borgo.jpg"
 }
