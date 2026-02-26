@@ -3,77 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anteprima Vetrina - Pro Loco Albano di Lucania</title>
+    <title>Vetrina Pro Loco - Albano di Lucania</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        :root { --primary-color: #b01c1c; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; overflow-x: hidden; }
-        
-        /* Smooth Scroll */
-        html { scroll-behavior: smooth; }
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-        /* Navbar Sticky */
-        .navbar { transition: all 0.3s; border-bottom: 1px solid #eee; }
-        .navbar-brand { font-weight: bold; line-height: 1.2; font-size: 1.1rem; color: var(--primary-color) !important; }
-        .nav-link { font-weight: 600; color: #444 !important; transition: 0.3s; margin: 0 5px; }
+    <style>
+        /* VARIABILI: Qui definiamo il colore rosso della Pro Loco in un unico punto */
+        :root { --primary-color: #b01c1c; } 
+        
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; color: #333; }
+
+        /* NAVBAR: Menu fisso in alto (sticky-top) con ombra (shadow) */
+        .navbar { border-bottom: 2px solid var(--primary-color); }
+        .nav-link { 
+            font-weight: 600; font-size: 0.85rem; text-transform: uppercase; 
+            color: #444 !important; transition: 0.3s;
+        }
         .nav-link:hover { color: var(--primary-color) !important; }
         
-        /* Hero Section */
+        /* HERO: La grande immagine iniziale con testo sopra */
         .hero-section { 
-            background-size: cover; background-position: center; height: 55vh; 
-            display: flex; align-items: center; justify-content: center; color: white; text-align: center;
-            margin-top: -1px;
+            background-size: cover; background-position: center; height: 50vh; 
+            display: flex; align-items: center; justify-content: center; 
+            color: white; text-align: center;
         }
 
-        /* Sezioni e Titoli */
-        section { scroll-margin-top: 80px; } /* Evita che il menu copra il titolo quando si clicca */
+        /* TITOLI: Decorazione con riga rossa sotto ogni titolo di sezione */
         .section-title { color: var(--primary-color); font-weight: bold; margin-bottom: 2rem; text-align: center; position: relative; padding-bottom: 15px; }
-        .section-title::after { content: ''; width: 60px; height: 4px; background: var(--primary-color); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 2px; }
+        .section-title::after { content: ''; width: 60px; height: 4px; background: var(--primary-color); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
 
-        /* Gallery */
-        .gallery-img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .gallery-img:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+        /* GALLERY: Effetto ingrandimento leggero quando passi il mouse sulle foto */
+        .gallery-img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .gallery-img:hover { transform: scale(1.05); }
 
-        /* Mappa */
-        .map-container { position: relative; padding-bottom: 50%; height: 0; overflow: hidden; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        /* MAPPA: Contenitore proporzionale per rendere la mappa fluida sui cellulari */
+        .map-container { position: relative; padding-bottom: 45%; height: 0; overflow: hidden; border-radius: 20px; }
         .map-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0; }
-
-        /* Modal per foto */
-        #photoModal { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); align-items: center; justify-content: center; padding: 20px; }
-        #photoModal img { max-width: 100%; max-height: 90vh; border-radius: 8px; border: 3px solid white; }
-        .close-modal { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; }
-
-        .badge-attivita { background-color: var(--primary-color); padding: 12px 20px; border-radius: 50px; font-size: 0.95rem; color: white; margin: 5px; display: inline-block; }
+        
+        /* MODAL: Sfondo nero a tutto schermo quando si clicca su una foto della gallery */
+        #photoModal { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; }
+        #photoModal img { max-width: 90%; max-height: 90%; border: 3px solid white; border-radius: 5px; }
     </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-2">
     <div class="container">
-        <a class="navbar-brand" href="#" id="nav-brand">Caricamento...</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand fw-bold" href="index.html" id="nav-brand" style="color: var(--primary-color); line-height: 1.1;">
+            Pro Loco<br><small style="font-size: 0.7rem; color: #555;">Albano di Lucania</small>
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
+        
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="#mission-sezione">Mission</a></li>
-                <li class="nav-item"><a class="nav-link" href="#biblio-sezione">Biblioteca</a></li>
-                <li class="nav-item"><a class="nav-link" href="#gallery-sezione">Gallery</a></li>
-                <li class="nav-item"><a class="nav-link" href="#mappa-sezione">Dove Siamo</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contatti">Contatti</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="chi-siamo.html">Chi siamo</a></li>
+                <li class="nav-item"><a class="nav-link" href="eventi.html">Eventi</a></li>
+                <li class="nav-item"><a class="nav-link" href="biblioteca.html">Biblioteca</a></li>
+                <li class="nav-item"><a class="nav-link" href="scopri-albano.html">Scopri Albano</a></li>
+                <li class="nav-item"><a class="nav-link" href="cosa-fare.html">Cosa fare</a></li>
+                <li class="nav-item"><a class="nav-link" href="dove-dormire.html">Dormire</a></li>
+                <li class="nav-item"><a class="nav-link" href="dove-mangiare.html">Mangiare</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<section class="hero-section" id="hero-bg">
+<header class="hero-section" id="hero-bg">
     <div class="container">
-        <h1 class="display-4 fw-bold" id="hero-titolo"></h1>
-        <p class="lead fs-3" id="hero-sottotitolo"></p>
+        <h1 class="display-3 fw-bold" id="hero-titolo"></h1>
+        <p class="lead fs-2" id="hero-sottotitolo"></p>
     </div>
-</section>
+</header>
 
-<section id="mission-sezione" class="container my-5 py-5">
+<main class="container my-5 py-5">
     <h2 class="section-title" id="mission-titolo"></h2>
     <div class="row justify-content-center">
         <div class="col-md-9 text-center">
@@ -81,13 +89,13 @@
             <div id="attivita-lista" class="mt-4"></div>
         </div>
     </div>
-</section>
+</main>
 
-<section id="biblio-sezione" class="bg-light py-5">
+<section class="bg-light py-5">
     <div class="container text-center">
         <h2 class="section-title" id="biblio-titolo"></h2>
         <div class="row justify-content-center">
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <p class="lead mb-4" id="biblio-testo"></p>
                 <img id="chi-siamo-img" src="" class="img-fluid rounded shadow-lg" style="max-height:400px;" alt="Biblioteca">
             </div>
@@ -95,17 +103,17 @@
     </div>
 </section>
 
-<section id="gallery-sezione" class="container my-5 py-5">
+<section class="container my-5 py-5">
     <h2 class="section-title" id="gallery-titolo"></h2>
     <div class="row g-3" id="gallery-container">
         </div>
 </section>
 
-<section id="mappa-sezione" class="container mb-5 pb-5 text-center">
+<section class="container mb-5 pb-5 text-center">
     <h2 class="section-title" id="mappa-titolo"></h2>
     <p class="lead mb-4" id="indirizzo-testo"></p>
-    <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12143.518600127533!2d16.0354153!3d40.5847634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133903f698a96c4d%3A0x633d26279f16d25!2s85010%20Albano%20di%20Lucania%20PZ!5e0!3m2!1sit!2sit!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
+    <div class="map-container shadow">
+        <iframe src="https://www.google.com/maps/search/Pro+Loco+Albano+di+Lucania+Potenza/@40.584148,16.035728,17z" allowfullscreen="" loading="lazy"></iframe>
     </div>
 </section>
 
@@ -113,23 +121,22 @@
     <div class="container">
         <p id="footer-text" class="mb-2"></p>
         <p>Email: <strong id="contatto-mail"></strong></p>
-        <p><small class="text-muted">Affiliata UNPLI - APS iscritta al RUNTS</small></p>
+        <p><small class="text-muted">Pro Loco Albano di Lucania - APS iscritta al RUNTS</small></p>
     </div>
 </footer>
 
 <div id="photoModal" onclick="this.style.display='none'">
-    <span class="close-modal">×</span>
     <img id="modalImg" src="">
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
+    // Carichiamo i dati dal file JSON esterno
     fetch('./contenuti-vetrina.json?v=' + new Date().getTime())
-        .then(response => {
-            if (!response.ok) throw new Error("File contenuti-vetrina.json non trovato");
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
+            // Inseriamo i testi nei posti giusti
             document.getElementById('nav-brand').innerHTML = data.nomeProLoco;
             document.getElementById('hero-titolo').innerText = data.heroTitolo;
             document.getElementById('hero-sottotitolo').innerText = data.heroSottotitolo;
@@ -143,27 +150,32 @@
             document.getElementById('contatto-mail').innerText = data.emailContatto;
             document.getElementById('footer-text').innerHTML = "© 2026 " + data.nomeProLoco;
             
+            // Impostiamo il colore del tema
             document.documentElement.style.setProperty('--primary-color', data.coloreSito);
-            document.getElementById('hero-bg').style.backgroundImage = "linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('./" + data.fotoSfondo + "')";
+            
+            // Impostiamo le foto principali
+            document.getElementById('hero-bg').style.backgroundImage = "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./" + data.fotoSfondo + "')";
             document.getElementById('chi-siamo-img').src = "./" + data.fotoCentrale;
 
-            const lista = data.sezioneAttivitaElenco.split(',');
-            document.getElementById('attivita-lista').innerHTML = lista.map(item => `<span class="badge-attivita shadow-sm">${item.trim()}</span>`).join('');
+            // Creiamo i Badge per l'elenco attività
+            const attivita = data.sezioneAttivitaElenco.split(',');
+            document.getElementById('attivita-lista').innerHTML = attivita.map(item => 
+                `<span class="badge bg-danger m-1 p-2 shadow-sm">${item.trim()}</span>`).join('');
 
+            // Creiamo la Gallery fotografica (le 8 foto)
             const galleryBox = document.getElementById('gallery-container');
-            galleryBox.innerHTML = ''; 
             data.fotoGallery.forEach(file => {
                 const col = document.createElement('div');
                 col.className = 'col-6 col-md-3';
-                col.innerHTML = `<img src="./${file}" class="gallery-img" onclick="mostraFoto('./${file}')" onerror="this.src='https://via.placeholder.com/400x300?text=Caricare+Foto'">`;
+                col.innerHTML = `
+                    <img src="./${file}" class="gallery-img" 
+                         onclick="mostraFoto('./${file}')" 
+                         onerror="this.src='https://via.placeholder.com/400x300?text=Caricare+Foto'">`;
                 galleryBox.appendChild(col);
             });
-        })
-        .catch(err => {
-            document.getElementById('nav-brand').innerHTML = "<span style='color:red'>Errore: " + err.message + "</span>";
-            console.error(err);
         });
 
+    // Funzione per mostrare la foto ingrandita
     function mostraFoto(percorso) {
         document.getElementById('modalImg').src = percorso;
         document.getElementById('photoModal').style.display = 'flex';
