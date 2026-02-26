@@ -9,60 +9,36 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        :root { 
-            --primary-color: #5d9cec; 
-            --light-bg: #f5f9ff;
-            --text-dark: #444;
-        } 
-        
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; color: var(--text-dark); background-color: #fff; overflow-x: hidden; margin:0; }
+        :root { --primary-color: #5d9cec; --light-bg: #f5f9ff; } 
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; color: #444; margin:0; overflow-x: hidden; }
 
-        /* NAVBAR SNELLA */
-        .navbar { border-bottom: 1px solid #eee; background: white !important; padding: 0.5rem 0; }
+        /* NAVBAR SNELLA (Dimensione menu corretta) */
+        .navbar { border-bottom: 1px solid #eee; background: white !important; }
         .navbar-brand { color: var(--primary-color) !important; font-size: 0.9rem; font-weight: bold; }
         .nav-link { 
             font-weight: 600; font-size: 0.8rem !important; text-transform: uppercase; 
-            color: #666 !important; padding: 5px 7px !important; transition: 0.3s; letter-spacing: 0.5px;
-        }
-        .nav-link:hover { color: var(--primary-color) !important; }
-
-        /* HERO SECTION */
-        .hero-section { 
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1200') no-repeat center center; 
-            background-size: cover; height: 50vh; display: flex; align-items: center; justify-content: center; 
-            color: white; text-align: center;
+            color: #666 !important; padding: 5px 7px !important; letter-spacing: 0.5px;
         }
 
-        /* SEZIONI A BLOCCHI */
+        /* BLOCCHI ALTERNATI (SX-DX) */
         .block-row { display: flex; flex-wrap: wrap; align-items: stretch; margin: 0; }
         .block-img { padding: 0; min-height: 450px; }
         .block-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .block-text { padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; }
-        .block-text h2 { color: var(--primary-color); font-weight: bold; text-transform: uppercase; font-size: 1.8rem; margin-bottom: 20px; }
-        .block-text p { font-size: 1.1rem; line-height: 1.8; color: #555; }
+        .block-text h2 { color: var(--primary-color); font-weight: bold; text-transform: uppercase; margin-bottom: 20px; }
+        
+        /* EVENTI E GALLERY */
+        .badge-evento { background: white; color: var(--primary-color); padding: 12px 25px; border-radius: 4px; margin: 8px; border: 1px solid #eef2f7; font-weight: bold; }
+        .gallery-img { width: 100%; height: 300px; object-fit: cover; border: 1px solid #fff; cursor: pointer; }
 
-        /* EVENTI */
-        .badge-evento { 
-            background: white; color: var(--primary-color); padding: 12px 25px; border-radius: 4px; 
-            font-size: 0.95rem; font-weight: bold; display: inline-block; margin: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #eef2f7;
-        }
-
-        /* GALLERY */
-        .gallery-img { width: 100%; height: 300px; object-fit: cover; cursor: pointer; transition: 0.3s; border: 1px solid #fff; }
-        .gallery-img:hover { opacity: 0.8; }
-
-        footer { background-color: #fff; border-top: 1px solid #eee; padding: 40px 0; text-align: center; font-size: 0.9rem; color: #888; }
+        footer { background-color: #fff; border-top: 1px solid #eee; padding: 40px 0; text-align: center; }
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-1">
     <div class="container-fluid px-4">
-        <a class="navbar-brand fw-bold" href="index.html">PRO LOCO ALBANO</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <a class="navbar-brand fw-bold" href="index.html" id="nav-brand">PRO LOCO</a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto align-items-center">
                 <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
@@ -79,21 +55,21 @@
     </div>
 </nav>
 
-<header class="hero-section">
+<header class="hero-section" id="hero-bg" style="background: #5d9cec; height: 50vh; display: flex; align-items: center; justify-content: center; color: white; text-align: center; background-size: cover;">
     <div class="container">
-        <h1 class="display-3 fw-bold">Albano di Lucania</h1>
-        <p class="lead fs-2">Un borgo da scoprire</p>
+        <h1 class="display-3 fw-bold" id="hero-titolo"></h1>
+        <p class="lead fs-2" id="hero-sottotitolo"></p>
     </div>
 </header>
 
 <section class="container-fluid px-0">
     <div class="row g-0 block-row">
         <div class="col-lg-6 block-img">
-            <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1200" alt="Mission">
+            <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1200" id="mission-img-tag">
         </div>
         <div class="col-lg-6 block-text" style="background-color: var(--light-bg);">
-            <h2>La nostra Mission</h2>
-            <p>La Pro Loco di Albano di Lucania opera per la valorizzazione del territorio, promuovendo eventi culturali e tradizioni locali che rendono unico il nostro borgo.</p>
+            <h2 id="mission-titolo"></h2>
+            <p id="mission-testo"></p>
         </div>
     </div>
 </section>
@@ -101,11 +77,11 @@
 <section class="container-fluid px-0">
     <div class="row g-0 block-row flex-row-reverse">
         <div class="col-lg-6 block-img">
-            <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1200" alt="Biblioteca">
+            <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1200" id="biblio-img-tag">
         </div>
         <div class="col-lg-6 block-text" style="background-color: #ffffff;">
-            <h2>Biblioteca Pro Loco</h2>
-            <p>Un luogo di incontro e cultura gestito con passione dalla Pro Loco, dedicato alla conservazione della memoria storica e alla diffusione della lettura.</p>
+            <h2 id="biblio-titolo"></h2>
+            <p id="biblio-testo"></p>
         </div>
     </div>
 </section>
@@ -113,32 +89,60 @@
 <section class="py-5" style="background-color: var(--light-bg);">
     <div class="container text-center py-4">
         <h2 style="color: var(--primary-color); font-weight: bold; text-transform: uppercase; margin-bottom: 40px;">Alcuni dei nostri eventi</h2>
-        <div class="d-flex flex-wrap justify-content-center">
-            <div class="badge-evento shadow-sm">Sagra del Caciocavallo</div>
-            <div class="badge-evento shadow-sm">Notte dei Desideri</div>
-            <div class="badge-evento shadow-sm">Percorsi Trekking</div>
-            <div class="badge-evento shadow-sm">Laboratori Artigianali</div>
-        </div>
+        <div id="attivita-lista" class="d-flex flex-wrap justify-content-center"></div>
     </div>
 </section>
 
 <section class="py-5">
     <div class="container-fluid px-0">
-        <h2 class="text-center" style="color: var(--primary-color); font-weight: bold; text-transform: uppercase; margin-bottom: 40px;">Galleria Fotografica</h2>
-        <div class="row g-0">
-            <div class="col-6 col-md-3"><img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?q=80&w=600" class="gallery-img"></div>
-            <div class="col-6 col-md-3"><img src="https://images.unsplash.com/photo-1520175480921-4edfa0683001?q=80&w=600" class="gallery-img"></div>
-            <div class="col-6 col-md-3"><img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=600" class="gallery-img"></div>
-            <div class="col-6 col-md-3"><img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=600" class="gallery-img"></div>
-        </div>
+        <h2 class="text-center" style="color: var(--primary-color); font-weight: bold; text-transform: uppercase; margin-bottom: 40px;" id="gallery-titolo"></h2>
+        <div class="row g-0" id="gallery-container"></div>
     </div>
 </section>
 
 <footer>
     <div class="container">
-        <p>© 2026 Pro Loco Albano di Lucania | Email: info@prolocoalbanodilucania.it</p>
+        <p id="footer-text"></p>
+        <p>Email: <strong id="contatto-mail" style="color: var(--primary-color);"></strong></p>
     </div>
 </footer>
+
+<script>
+    async function caricaDati() {
+        try {
+            const response = await fetch('./contenuti-vetrina.json?v=' + new Date().getTime());
+            const data = await response.json();
+
+            // Caricamento dei tuoi testi originali dal JSON
+            document.getElementById('nav-brand').innerText = data.nomeProLoco;
+            document.getElementById('hero-titolo').innerText = data.heroTitolo;
+            document.getElementById('hero-sottotitolo').innerText = data.heroSottotitolo;
+            document.getElementById('mission-titolo').innerText = data.sezioneMissionTitolo;
+            document.getElementById('mission-testo').innerText = data.sezioneMissionTesto;
+            document.getElementById('biblio-titolo').innerText = data.sezioneBibliotecaTitolo;
+            document.getElementById('biblio-testo').innerText = data.sezioneBibliotecaTesto;
+            document.getElementById('gallery-titolo').innerText = data.sezioneGalleryTitolo;
+            document.getElementById('contatto-mail').innerText = data.emailContatto;
+            document.getElementById('footer-text').innerHTML = "© 2026 " + data.nomeProLoco;
+
+            // Foto Hero
+            if(data.fotoSfondo) document.getElementById('hero-bg').style.backgroundImage = "linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('./" + data.fotoSfondo + "')";
+
+            // Eventi
+            const attivita = data.sezioneAttivitaElenco.split(',');
+            document.getElementById('attivita-lista').innerHTML = attivita.map(item => `<div class="badge-evento shadow-sm">${item.trim()}</div>`).join('');
+
+            // Gallery
+            const galleryBox = document.getElementById('gallery-container');
+            galleryBox.innerHTML = data.fotoGallery.map(file => `
+                <div class="col-6 col-md-3">
+                    <img src="./${file}" class="gallery-img" onerror="this.src='https://via.placeholder.com/600x400?text=Foto'">
+                </div>`).join('');
+
+        } catch (error) { console.error("Errore caricamento dati:", error); }
+    }
+    caricaDati();
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
