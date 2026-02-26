@@ -9,21 +9,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* NUOVA PALETTE AZZURRO CHIARO */
         :root { 
-            --primary-color: #5d9cec;    /* Azzurro Soft (Dusty Blue) */
-            --accent-color: #a0d468;     /* Un tocco di verde mela per contrasto fresco (opzionale) */
-            --light-bg: #f5f9ff;         /* Sfondo azzurrino chiarissimo */
+            --primary-color: #5d9cec;    /* Azzurro Soft */
+            --accent-color: #4fc1e9;     /* Azzurro più vivace per Diario di Bordo */
+            --light-bg: #f5f9ff;         
             --text-dark: #4a4a4a;
         } 
         
         body { font-family: 'Segoe UI', Tahoma, sans-serif; color: var(--text-dark); background-color: #fff; }
 
-        /* NAVBAR */
+        /* NAVBAR - VOCI INGRANDITE */
         .navbar { border-bottom: 2px solid #e1e8f0; background: white !important; }
-        .nav-link { font-weight: 600; font-size: 0.82rem; text-transform: uppercase; color: #666 !important; transition: 0.3s; }
+        
+        .navbar-brand { 
+            color: var(--primary-color) !important; 
+            font-size: 1.3rem; /* Nome Pro Loco leggermente più grande */
+            font-weight: bold;
+        }
+
+        .nav-link { 
+            font-weight: 600; 
+            font-size: 1.1rem !important; /* DIMENSIONE AUMENTATA */
+            text-transform: capitalize; /* "Home page" invece di "HOME PAGE" per più eleganza */
+            color: #555 !important; 
+            padding: 10px 15px !important; /* Più spazio intorno ai link */
+            transition: 0.3s; 
+        }
+        
         .nav-link:hover { color: var(--primary-color) !important; }
-        .navbar-brand { color: var(--primary-color) !important; font-size: 1.1rem; }
         
         /* HERO SECTION */
         .hero-section { 
@@ -33,51 +46,40 @@
             color: white; text-align: center;
         }
 
-        /* TITOLI DELLE SEZIONI */
         .section-title { color: var(--primary-color); font-weight: bold; margin-bottom: 2rem; text-align: center; position: relative; padding-bottom: 15px; }
         .section-title::after { content: ''; width: 50px; height: 3px; background: #ccd1d9; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
 
-        /* EVENTI GRANDI (AZZURRO CHIARO) */
+        /* EVENTI GRANDI */
         .badge-evento { 
             background: white;
             color: var(--primary-color); 
             padding: 15px 30px; border-radius: 15px; 
-            font-size: 1.1rem; font-weight: bold;
+            font-size: 1.2rem; font-weight: bold;
             display: inline-block; margin: 10px;
             box-shadow: 0 5px 15px rgba(93,156,236,0.15);
             border: 2px solid #e6eef7;
             transition: 0.3s ease;
         }
-        .badge-evento:hover { 
-            transform: translateY(-5px); 
-            background: var(--primary-color); 
-            color: white; 
-            border-color: var(--primary-color);
-        }
+        .badge-evento:hover { transform: translateY(-5px); background: var(--primary-color); color: white; }
 
-        /* GALLERY */
         .gallery-img { width: 100%; height: 220px; object-fit: cover; border-radius: 15px; cursor: pointer; transition: 0.4s; }
-        .gallery-img:hover { transform: scale(1.03); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         
-        /* FOCUS BIBLIOTECA */
-        .bg-light-blue { background-color: var(--light-bg); }
-
         #photoModal { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.98); align-items: center; justify-content: center; }
-        #photoModal img { max-width: 85%; max-height: 85%; border-radius: 10px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+        #photoModal img { max-width: 85%; max-height: 85%; border-radius: 10px; }
 
         footer { background-color: #f8f9fb !important; color: #666 !important; border-top: 1px solid #eee; }
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-2">
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-3">
     <div class="container">
         <a class="navbar-brand fw-bold" href="index.html" id="nav-brand">PRO LOCO ALBANO</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto align-items-center">
                 <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="chi-siamo.html">Chi siamo</a></li>
                 <li class="nav-item"><a class="nav-link" href="eventi.html">Eventi</a></li>
@@ -86,7 +88,7 @@
                 <li class="nav-item"><a class="nav-link" href="cosa-fare.html">Cosa fare</a></li>
                 <li class="nav-item"><a class="nav-link" href="dove-dormire.html">Dormire</a></li>
                 <li class="nav-item"><a class="nav-link" href="dove-mangiare.html">Mangiare</a></li>
-                <li class="nav-item"><a class="nav-link" href="guestbook.html" style="color: #4fc1e9 !important;"><i class="fas fa-pen-fancy"></i> Diario di Bordo</a></li>
+                <li class="nav-item"><a class="nav-link" href="guestbook.html" style="color: var(--accent-color) !important;"><i class="fas fa-pen-fancy"></i> Diario di Bordo</a></li>
             </ul>
         </div>
     </div>
@@ -94,7 +96,7 @@
 
 <header class="hero-section" id="hero-bg">
     <div class="container">
-        <h1 class="display-3 fw-bold" id="hero-titolo" style="text-shadow: 0 2px 10px rgba(0,0,0,0.2);">Pro Loco Albano</h1>
+        <h1 class="display-3 fw-bold" id="hero-titolo">Pro Loco Albano</h1>
         <p class="lead fs-2" id="hero-sottotitolo">Un borgo da scoprire</p>
     </div>
 </header>
@@ -111,8 +113,7 @@
 <section class="bg-light-blue py-5">
     <div class="container text-center">
         <h2 class="section-title">Alcuni dei nostri eventi</h2>
-        <div id="attivita-lista" class="mt-4 d-flex flex-wrap justify-content-center">
-            </div>
+        <div id="attivita-lista" class="mt-4 d-flex flex-wrap justify-content-center"></div>
     </div>
 </section>
 
@@ -145,6 +146,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
+    // Inserire lo stesso script dell'ultimo messaggio per caricare i dati JSON
     async function caricaDati() {
         try {
             const response = await fetch('./contenuti-vetrina.json?v=' + new Date().getTime());
@@ -167,14 +169,12 @@
                 document.getElementById('chi-siamo-img').src = "./" + data.fotoCentrale;
             }
 
-            // Badge Eventi con stile pulito
             if(data.sezioneAttivitaElenco) {
                 const attivita = data.sezioneAttivitaElenco.split(',');
                 document.getElementById('attivita-lista').innerHTML = attivita.map(item => 
                     `<div class="badge-evento">${item.trim()}</div>`).join('');
             }
 
-            // Gallery
             if(data.fotoGallery) {
                 const galleryBox = document.getElementById('gallery-container');
                 galleryBox.innerHTML = data.fotoGallery.map(file => `
