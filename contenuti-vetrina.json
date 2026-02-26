@@ -1,22 +1,15 @@
 {
-  "nomeProLoco": "Associazione Turistica Pro Loco<br>di Albano di Lucania APS",
-  "heroTitolo": "Identità, Storia e Territorio",
-  "heroSottotitolo": "Dal 2010 al servizio della comunità per valorizzare le eccellenze di Albano di Lucania.",
+  "nomeProLoco": "PRO LOCO ALBANO DI LUCANIA",
+  "heroTitolo": "Benvenuti ad Albano",
+  "heroSottotitolo": "Tra Storia, Natura e Tradizione",
+  "fotoSfondo": "foto-alto.jpg",
   "sezioneMissionTitolo": "La nostra Mission",
   "sezioneMissionTesto": "Siamo un'Associazione di Promozione Sociale (APS) iscritta al RUNTS dal 2024. Ci impegniamo nella valorizzazione del territorio, la tutela delle tradizioni e la promozione del turismo locale, collaborando con l'UNPLI e le comunità locali.",
-  "sezioneAttivitaTitolo": "Cosa Facciamo",
-  "sezioneAttivitaElenco": "Il Latte a San Vito, Gran Festa d'Autunno, Notte Bianca in Biblioteca, Giornate FAI, Escursioni",
-  "sezioneBibliotecaTitolo": "Biblioteca 'Prof. Mario Scelzi'",
-  "sezioneBibliotecaTesto": "Inaugurata il 19 aprile 2025 e dedicata alla memoria del Prof. Mario Scelzi, è un punto di riferimento culturale per lo studio delle origini di Albano.",
-  "sezioneGalleryTitolo": "Galleria Fotografica",
-  "sezioneMappaTitolo": "Dove Siamo",
-  "indirizzoProLoco": "Largo San Giovanni 8, Albano di Lucania (PZ)",
-  "emailContatto": "info@prolocoalbanodilucania.it",
-  "coloreSito": "#b01c1c",
-  "fotoSfondo": "foto-alto.jpg",
-  "fotoCentrale": "foto-borgo.jpg",
-  "fotoGallery": [
-    "foto1.jpg", "foto2.jpg", "foto3.jpg", "foto4.jpg",
-    "foto5.jpg", "foto6.jpg", "foto7.jpg", "foto8.jpg"
-  ]
+  "fotoCentrale": "biblioteca.jpg",
+  "sezioneAttivitaElenco": "Sagra del Caciocavallo, Notte dei Desideri, Percorsi Trekking, Laboratori Artigianali",
+  "sezioneBibliotecaTitolo": "La Biblioteca Comunale",
+  "sezioneBibliotecaTesto": "Un luogo di incontro e cultura gestito con passione dalla Pro Loco.",
+  "sezioneGalleryTitolo": "Momenti dal Borgo",
+  "fotoGallery": ["gallery1.jpg", "gallery2.jpg", "gallery3.jpg", "gallery4.jpg", "gallery5.jpg", "gallery6.jpg", "gallery7.jpg", "gallery8.jpg"],
+  "emailContatto": "info@prolocoalbanodilucania.it"
 }
