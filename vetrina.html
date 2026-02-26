@@ -3,66 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vetrina Pro Loco - Albano di Lucania</title>
+    <title>Pro Loco Albano di Lucania</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         :root { --primary-color: #b01c1c; } 
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; color: #333; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; color: #333; background-color: #fff; }
 
-        /* NAVBAR: Menu fisso in alto */
-        .navbar { border-bottom: 2px solid var(--primary-color); }
-        .nav-link { 
-            font-weight: 600; font-size: 0.85rem; text-transform: uppercase; 
-            color: #444 !important; transition: 0.3s;
-        }
-        .nav-link:hover { color: var(--primary-color) !important; }
+        .navbar { border-bottom: 2px solid var(--primary-color); background: white !important; }
+        .nav-link { font-weight: 600; font-size: 0.85rem; text-transform: uppercase; color: #444 !important; }
         
-        /* HERO: Immagine di copertina */
+        /* HERO SECTION */
         .hero-section { 
+            background: #444; /* Colore di riserva se manca l'immagine */
             background-size: cover; background-position: center; height: 50vh; 
             display: flex; align-items: center; justify-content: center; 
             color: white; text-align: center;
         }
 
-        /* TITOLI DELLE SEZIONI */
         .section-title { color: var(--primary-color); font-weight: bold; margin-bottom: 2rem; text-align: center; position: relative; padding-bottom: 15px; }
         .section-title::after { content: ''; width: 60px; height: 4px; background: var(--primary-color); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
 
-        /* BADGE EVENTI: Ingranditi come richiesto */
+        /* EVENTI GRANDI */
         .badge-evento { 
-            background-color: var(--primary-color); 
-            color: white; 
-            padding: 15px 25px; 
-            border-radius: 50px; 
-            font-size: 1.2rem; /* Titoli più grandi */
-            font-weight: bold;
-            display: inline-block;
-            margin: 10px;
+            background-color: var(--primary-color); color: white; 
+            padding: 15px 25px; border-radius: 50px; 
+            font-size: 1.2rem; font-weight: bold;
+            display: inline-block; margin: 10px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            transition: 0.3s;
         }
-        .badge-evento:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
 
-        /* GALLERY */
-        .gallery-img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; cursor: pointer; transition: 0.3s; }
-        .gallery-img:hover { transform: scale(1.05); }
+        .gallery-img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; cursor: pointer; }
         
-        /* MODAL FOTO */
         #photoModal { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; }
-        #photoModal img { max-width: 90%; max-height: 90%; border: 3px solid white; border-radius: 5px; }
+        #photoModal img { max-width: 90%; max-height: 90%; border: 3px solid white; }
     </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-2">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="index.html" id="nav-brand" style="color: var(--primary-color); line-height: 1.1;">
-            Pro Loco<br><small style="font-size: 0.7rem; color: #555;">Albano di Lucania</small>
-        </a>
+        <a class="navbar-brand fw-bold" href="index.html" id="nav-brand" style="color: var(--primary-color);">PRO LOCO ALBANO</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -83,16 +66,16 @@
 
 <header class="hero-section" id="hero-bg">
     <div class="container">
-        <h1 class="display-3 fw-bold" id="hero-titolo"></h1>
-        <p class="lead fs-2" id="hero-sottotitolo"></p>
+        <h1 class="display-3 fw-bold" id="hero-titolo">Pro Loco Albano</h1>
+        <p class="lead fs-2" id="hero-sottotitolo">Caricamento in corso...</p>
     </div>
 </header>
 
 <section class="container my-5 py-5">
-    <h2 class="section-title" id="mission-titolo"></h2>
+    <h2 class="section-title" id="mission-titolo">La nostra Mission</h2>
     <div class="row justify-content-center">
         <div class="col-md-9 text-center">
-            <p class="lead" id="mission-testo"></p>
+            <p class="lead" id="mission-testo">Benvenuti nel sito della Pro Loco di Albano di Lucania.</p>
         </div>
     </div>
 </section>
@@ -101,3 +84,98 @@
     <div class="container text-center">
         <h2 class="section-title">Alcuni dei nostri eventi</h2>
         <div id="attivita-lista" class="mt-4 d-flex flex-wrap justify-content-center">
+            </div>
+    </div>
+</section>
+
+<section class="container my-5 py-5 text-center">
+    <h2 class="section-title" id="biblio-titolo">Biblioteca Pro Loco</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <p class="lead mb-4" id="biblio-testo"></p>
+            <img id="chi-siamo-img" src="" class="img-fluid rounded shadow-lg" style="max-height:400px; display:none;" alt="Biblioteca">
+        </div>
+    </div>
+</section>
+
+<section class="bg-light py-5">
+    <div class="container my-5">
+        <h2 class="section-title" id="gallery-titolo">Galleria Fotografica</h2>
+        <div class="row g-3" id="gallery-container">
+            </div>
+    </div>
+</section>
+
+<footer class="py-5 bg-dark text-white text-center">
+    <div class="container">
+        <p id="footer-text" class="mb-2">© 2026 Pro Loco Albano di Lucania</p>
+        <p>Email: <strong id="contatto-mail">info@prolocoalbanodilucania.it</strong></p>
+    </div>
+</footer>
+
+<div id="photoModal" onclick="this.style.display='none'"><img id="modalImg" src=""></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // USIAMO UN TRY/CATCH PER EVITARE CHE LA PAGINA SPARISCA SE C'È UN ERRORE
+    async function caricaDati() {
+        try {
+            const response = await fetch('./contenuti-vetrina.json?v=' + new Date().getTime());
+            if (!response.ok) throw new Error("File JSON non trovato");
+            const data = await response.json();
+
+            // Aggiornamento Testi
+            document.getElementById('nav-brand').innerHTML = data.nomeProLoco || "PRO LOCO ALBANO";
+            document.getElementById('hero-titolo').innerText = data.heroTitolo || "";
+            document.getElementById('hero-sottotitolo').innerText = data.heroSottotitolo || "";
+            document.getElementById('mission-titolo').innerText = data.sezioneMissionTitolo || "Mission";
+            document.getElementById('mission-testo').innerText = data.sezioneMissionTesto || "";
+            document.getElementById('biblio-titolo').innerText = data.sezioneBibliotecaTitolo || "Biblioteca";
+            document.getElementById('biblio-testo').innerText = data.sezioneBibliotecaTesto || "";
+            document.getElementById('gallery-titolo').innerText = data.sezioneGalleryTitolo || "Gallery";
+            document.getElementById('contatto-mail').innerText = data.emailContatto || "";
+            document.getElementById('footer-text').innerHTML = "© 2026 " + (data.nomeProLoco || "Pro Loco Albano");
+
+            // Immagini
+            if(data.fotoSfondo) {
+                document.getElementById('hero-bg').style.backgroundImage = "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./" + data.fotoSfondo + "')";
+            }
+            if(data.fotoCentrale) {
+                const imgBiblio = document.getElementById('chi-siamo-img');
+                imgBiblio.src = "./" + data.fotoCentrale;
+                imgBiblio.style.display = 'inline-block';
+            }
+
+            // Eventi Grandi
+            if(data.sezioneAttivitaElenco) {
+                const attivita = data.sezioneAttivitaElenco.split(',');
+                document.getElementById('attivita-lista').innerHTML = attivita.map(item => 
+                    `<div class="badge-evento">${item.trim()}</div>`).join('');
+            }
+
+            // Gallery
+            if(data.fotoGallery) {
+                const galleryBox = document.getElementById('gallery-container');
+                galleryBox.innerHTML = data.fotoGallery.map(file => `
+                    <div class="col-6 col-md-3">
+                        <img src="./${file}" class="gallery-img shadow" onclick="mostraFoto('./${file}')" onerror="this.src='https://via.placeholder.com/400x300?text=Foto'">
+                    </div>`).join('');
+            }
+
+        } catch (error) {
+            console.error("Errore nel caricamento:", error);
+            document.getElementById('hero-sottotitolo').innerText = "Benvenuti ad Albano di Lucania";
+        }
+    }
+
+    function mostraFoto(percorso) {
+        document.getElementById('modalImg').src = percorso;
+        document.getElementById('photoModal').style.display = 'flex';
+    }
+
+    caricaDati();
+</script>
+
+</body>
+</html>
