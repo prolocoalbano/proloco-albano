@@ -4,87 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pro Loco Albano di Lucania</title>
-    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
     <style>
-        :root { 
-            --primary-color: #5d9cec; 
-            --accent-color: #4fc1e9;
-            --light-bg: #f5f9ff;
-            --text-dark: #4a4a4a;
-        } 
-        
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; color: var(--text-dark); background-color: #fff; overflow-x: hidden; margin:0; padding:0; }
-
-        /* NAVBAR SNELLA */
+        :root { --primary-color: #5d9cec; --accent-color: #4fc1e9; --light-bg: #f5f9ff; }
+        body { font-family: 'Segoe UI', sans-serif; color: #444; margin:0; }
         .navbar { border-bottom: 1px solid #eee; background: white !important; }
-        .navbar-brand { color: var(--primary-color) !important; font-size: 1rem; font-weight: bold; }
-        .nav-link { 
-            font-weight: 600; font-size: 0.85rem !important; text-transform: uppercase; 
-            color: #666 !important; padding: 5px 8px !important; transition: 0.3s; letter-spacing: 0.3px;
-        }
-        .nav-link:hover { color: var(--primary-color) !important; }
-
-        /* HERO SECTION */
-        .hero-section { 
-            background: var(--primary-color) no-repeat center center; 
-            background-size: cover;
-            height: 50vh; display: flex; align-items: center; justify-content: center; 
-            color: white; text-align: center;
-        }
-
-        /* SEZIONE MISSION STILE MONTESPERTOLI (Blocchi a filo) */
-        .mission-row { display: flex; flex-wrap: wrap; align-items: stretch; margin: 0; }
-        .mission-img-col { padding: 0; min-height: 450px; }
-        #mission-img-tag { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .nav-link { font-weight: 600; font-size: 0.82rem !important; text-transform: uppercase; color: #666 !important; padding: 5px 8px !important; }
+        .hero-section { background: #5d9cec; background-size: cover; height: 50vh; display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
         
-        .mission-text-col { 
-            padding: 80px 60px; background-color: var(--light-bg); 
-            display: flex; flex-direction: column; justify-content: center;
-        }
-        .mission-text-col h2 { color: var(--primary-color); font-weight: bold; margin-bottom: 25px; text-transform: uppercase; font-size: 2rem; }
-        .mission-text-col p { font-size: 1.15rem; line-height: 1.8; color: #555; margin: 0; }
-
-        /* EVENTI */
-        .section-title { color: var(--primary-color); font-weight: bold; margin-bottom: 3rem; text-align: center; text-transform: uppercase; }
-        .badge-evento { 
-            background: white; color: var(--primary-color); padding: 12px 25px; border-radius: 4px; 
-            font-size: 1rem; font-weight: bold; display: inline-block; margin: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #eef2f7; transition: 0.3s ease;
-        }
-        .badge-evento:hover { background: var(--primary-color); color: white; transform: translateY(-3px); }
-
-        /* GALLERY */
-        .gallery-img { width: 100%; height: 280px; object-fit: cover; cursor: pointer; transition: 0.3s; }
-        .gallery-img:hover { opacity: 0.8; }
+        /* Layout stile Montespertoli */
+        .mission-row { display: flex; flex-wrap: wrap; margin: 0; }
+        .mission-img-col { padding: 0; min-height: 400px; background: #eee; }
+        .mission-img-col img { width: 100%; height: 100%; object-fit: cover; }
+        .mission-text-col { padding: 60px; background-color: var(--light-bg); display: flex; flex-direction: column; justify-content: center; }
+        .mission-text-col h2 { color: var(--primary-color); font-weight: bold; text-transform: uppercase; }
         
-        #photoModal { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.98); align-items: center; justify-content: center; }
-        #photoModal img { max-width: 85%; max-height: 85%; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-
-        footer { background-color: #fff; color: #888 !important; border-top: 1px solid #eee; padding: 60px 0; text-align: center; }
+        .badge-evento { background: white; color: var(--primary-color); padding: 10px 20px; border-radius: 4px; margin: 5px; border: 1px solid #ddd; display: inline-block; font-weight: bold; }
+        .gallery-img { width: 100%; height: 250px; object-fit: cover; }
+        #photoModal { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); align-items: center; justify-content: center; }
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-1">
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top py-1">
     <div class="container-fluid px-4">
-        <a class="navbar-brand fw-bold" href="index.html" id="nav-brand">PRO LOCO</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <a class="navbar-brand fw-bold" href="#" id="nav-brand">PRO LOCO</a>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto align-items-center">
+            <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="chi-siamo.html">Chi siamo</a></li>
-                <li class="nav-item"><a class="nav-link" href="eventi.html">Eventi</a></li>
-                <li class="nav-item"><a class="nav-link" href="biblioteca.html">Biblioteca</a></li>
-                <li class="nav-item"><a class="nav-link" href="scopri-albano.html">Scopri Albano</a></li>
-                <li class="nav-item"><a class="nav-link" href="cosa-fare.html">Cosa fare</a></li>
-                <li class="nav-item"><a class="nav-link" href="dove-dormire.html">Dormire</a></li>
-                <li class="nav-item"><a class="nav-link" href="dove-mangiare.html">Mangiare</a></li>
-                <li class="nav-item"><a class="nav-link" href="guestbook.html" style="color: var(--accent-color) !important;"><i class="fas fa-pen-fancy"></i> Diario</a></li>
+                <li class="nav-item"><a class="nav-link" href="guestbook.html" style="color:var(--accent-color)!important;">Diario</a></li>
             </ul>
         </div>
     </div>
@@ -92,104 +42,61 @@
 
 <header class="hero-section" id="hero-bg">
     <div class="container">
-        <h1 class="display-3 fw-bold" id="hero-titolo">Pro Loco Albano</h1>
-        <p class="lead fs-2" id="hero-sottotitolo">Un borgo da vivere</p>
+        <h1 id="hero-titolo">Titolo di Prova</h1>
+        <p id="hero-sottotitolo">Sottotitolo di Prova</p>
     </div>
 </header>
 
 <section class="container-fluid px-0">
     <div class="row g-0 mission-row">
         <div class="col-lg-6 mission-img-col">
-            <img src="" id="mission-img-tag" alt="Mission">
+            <img id="mission-img-tag" src="https://via.placeholder.com/800x600?text=Immagine+Mission">
         </div>
         <div class="col-lg-6 mission-text-col">
-            <h2 id="mission-titolo">La nostra Mission</h2>
-            <p id="mission-testo">Caricamento contenuti...</p>
+            <h2 id="mission-titolo">Mission</h2>
+            <p id="mission-testo">Se vedi questo testo, il file JSON non è stato caricato correttamente.</p>
         </div>
     </div>
 </section>
 
-<section class="py-5 my-5">
-    <div class="container text-center">
-        <h2 class="section-title">Alcuni dei nostri eventi</h2>
-        <div id="attivita-lista" class="d-flex flex-wrap justify-content-center"></div>
-    </div>
-</section>
+<div class="container py-5 text-center">
+    <div id="attivita-lista"></div>
+</div>
 
-<section class="py-5 bg-light">
-    <div class="container-fluid px-0">
-        <h2 class="section-title" id="gallery-titolo">Galleria Fotografica</h2>
-        <div class="row g-0" id="gallery-container"></div>
-    </div>
-</section>
-
-<footer>
-    <div class="container">
-        <p id="footer-text" class="mb-1"></p>
-        <p>Email: <strong id="contatto-mail" style="color: var(--primary-color);"></strong></p>
-    </div>
-</footer>
-
-<div id="photoModal" onclick="this.style.display='none'"><img id="modalImg" src=""></div>
+<div id="gallery-container" class="row g-0"></div>
 
 <script>
+    const datiEsempio = {
+        nomeProLoco: "PRO LOCO ALBANO",
+        heroTitolo: "Albano di Lucania",
+        heroSottotitolo: "Il borgo della magia",
+        sezioneMissionTitolo: "Benvenuti",
+        sezioneMissionTesto: "Stiamo caricando i contenuti definitivi dal file JSON..."
+    };
+
     async function caricaDati() {
         try {
-            // Aggiungiamo un timestamp per forzare l'aggiornamento della cache
-            const response = await fetch('./contenuti-vetrina.json?v=' + new Date().getTime());
-            if (!response.ok) throw new Error("Errore nel caricamento del file JSON");
-            const data = await response.json();
-
-            // Testi
-            document.getElementById('nav-brand').innerText = data.nomeProLoco || "PRO LOCO";
-            document.getElementById('hero-titolo').innerText = data.heroTitolo || "";
-            document.getElementById('hero-sottotitolo').innerText = data.heroSottotitolo || "";
-            document.getElementById('mission-titolo').innerText = data.sezioneMissionTitolo || "Mission";
-            document.getElementById('mission-testo').innerText = data.sezioneMissionTesto || "";
-            document.getElementById('gallery-titolo').innerText = data.sezioneGalleryTitolo || "Gallery";
-            document.getElementById('contatto-mail').innerText = data.emailContatto || "";
-            document.getElementById('footer-text').innerHTML = "© 2026 " + data.nomeProLoco;
-
-            // Immagini
-            if (data.fotoSfondo) {
-                document.getElementById('hero-bg').style.backgroundImage = "linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('./" + data.fotoSfondo + "')";
-            }
-            if (data.fotoCentrale) {
-                document.getElementById('mission-img-tag').src = "./" + data.fotoCentrale;
-            }
-
-            // Badge Eventi
-            if (data.sezioneAttivitaElenco) {
-                const attivita = data.sezioneAttivitaElenco.split(',');
-                document.getElementById('attivita-lista').innerHTML = attivita.map(item => 
-                    `<div class="badge-evento shadow-sm">${item.trim()}</div>`).join('');
-            }
-
-            // Gallery
-            if (data.fotoGallery) {
-                const galleryBox = document.getElementById('gallery-container');
-                galleryBox.innerHTML = data.fotoGallery.map(file => `
-                    <div class="col-6 col-md-3">
-                        <img src="./${file}" class="gallery-img" onclick="mostraFoto('./${file}')" onerror="this.src='https://via.placeholder.com/400x300?text=Immagine'">
-                    </div>`).join('');
-            }
-
-        } catch (error) {
-            console.error("Errore:", error);
-            document.getElementById('mission-testo').innerText = "Attenzione: Assicurati che il file contenuti-vetrina.json sia presente nella cartella e scritto correttamente.";
+            const res = await fetch('./contenuti-vetrina.json');
+            if (!res.ok) throw new Error();
+            const data = await res.json();
+            aggiornaPagina(data);
+        } catch (e) {
+            console.log("JSON non trovato, uso dati di esempio.");
+            aggiornaPagina(datiEsempio);
         }
     }
 
-    function mostraFoto(percorso) {
-        document.getElementById('modalImg').src = percorso;
-        document.getElementById('photoModal').style.display = 'flex';
+    function aggiornaPagina(data) {
+        document.getElementById('nav-brand').innerText = data.nomeProLoco;
+        document.getElementById('hero-titolo').innerText = data.heroTitolo;
+        document.getElementById('hero-sottotitolo').innerText = data.heroSottotitolo;
+        document.getElementById('mission-titolo').innerText = data.sezioneMissionTitolo;
+        document.getElementById('mission-testo').innerText = data.sezioneMissionTesto;
+        if(data.fotoCentrale) document.getElementById('mission-img-tag').src = data.fotoCentrale;
+        if(data.fotoSfondo) document.getElementById('hero-bg').style.backgroundImage = "url("+data.fotoSfondo+")";
     }
 
-    // Avvia il caricamento
     caricaDati();
 </script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>
