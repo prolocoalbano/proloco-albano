@@ -9,90 +9,78 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* TEMA COLORI AZZURRO CHIARO */
         :root { 
-            --primary-color: #5d9cec;    /* Azzurro Polvere principale */
-            --accent-color: #4fc1e9;     /* Azzurro vivace per Diario di Bordo */
-            --light-bg: #f5f9ff;         /* Sfondo sezioni alternativo */
+            --primary-color: #5d9cec; 
+            --accent-color: #4fc1e9;
+            --light-bg: #f5f9ff;
             --text-dark: #4a4a4a;
         } 
         
         body { font-family: 'Segoe UI', Tahoma, sans-serif; color: var(--text-dark); background-color: #fff; }
 
-        /* NAVBAR: Menu sempre in evidenza */
-        .navbar { border-bottom: 2px solid #e1e8f0; background: white !important; }
+        /* NAVBAR: OTTIMIZZATA PER 9 VOCI */
+        .navbar { border-bottom: 1px solid #eee; background: white !important; }
         
         .navbar-brand { 
             color: var(--primary-color) !important; 
-            font-size: 1.1rem; 
+            font-size: 1rem; 
             font-weight: bold;
-            line-height: 1.2;
         }
 
-        /* DIMENSIONE MENU EQUILIBRATA (0.95rem) */
         .nav-link { 
             font-weight: 600; 
-            font-size: 0.95rem !important; 
-            text-transform: capitalize; 
-            color: #555 !important; 
-            padding: 8px 12px !important; 
+            font-size: 0.85rem !important; /* DIMENSIONE RIDOTTA PER EQUILIBRIO */
+            text-transform: uppercase; /* Maiuscoletto per massima leggibilità a dimensioni piccole */
+            color: #666 !important; 
+            padding: 5px 8px !important; /* SPAZIO TRA LE VOCI RIDOTTO */
             transition: 0.3s; 
+            letter-spacing: 0.3px;
         }
         
         .nav-link:hover { color: var(--primary-color) !important; }
 
-        /* Adattamento per schermi medi (tablet/portatili piccoli) */
-        @media (max-width: 1200px) {
-            .nav-link { font-size: 0.85rem !important; padding: 8px 8px !important; }
-        }
-        
-        /* HERO: Immagine di copertina */
+        /* HERO SECTION */
         .hero-section { 
             background: var(--primary-color);
-            background-size: cover; background-position: center; height: 50vh; 
+            background-size: cover; background-position: center; height: 45vh; 
             display: flex; align-items: center; justify-content: center; 
             color: white; text-align: center;
         }
 
-        /* TITOLI DELLE SEZIONI */
         .section-title { color: var(--primary-color); font-weight: bold; margin-bottom: 2rem; text-align: center; position: relative; padding-bottom: 15px; }
-        .section-title::after { content: ''; width: 50px; height: 3px; background: #ccd1d9; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
+        .section-title::after { content: ''; width: 40px; height: 3px; background: #ccd1d9; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
 
-        /* EVENTI: Badge grandi e chiari */
+        /* EVENTI */
         .badge-evento { 
-            background: white;
-            color: var(--primary-color); 
-            padding: 15px 30px; border-radius: 15px; 
-            font-size: 1.15rem; font-weight: bold;
-            display: inline-block; margin: 10px;
-            box-shadow: 0 5px 15px rgba(93,156,236,0.12);
-            border: 2px solid #e6eef7;
+            background: white; color: var(--primary-color); 
+            padding: 12px 25px; border-radius: 10px; 
+            font-size: 1.1rem; font-weight: bold;
+            display: inline-block; margin: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid #eef2f7;
             transition: 0.3s ease;
         }
-        .badge-evento:hover { transform: translateY(-5px); background: var(--primary-color); color: white; border-color: var(--primary-color); }
+        .badge-evento:hover { transform: translateY(-3px); background: var(--primary-color); color: white; }
 
         /* GALLERY */
-        .gallery-img { width: 100%; height: 220px; object-fit: cover; border-radius: 15px; cursor: pointer; transition: 0.4s; }
-        .gallery-img:hover { transform: scale(1.03); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .gallery-img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; cursor: pointer; transition: 0.3s; }
         
-        /* MODAL PER INGRANDIRE FOTO */
         #photoModal { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.98); align-items: center; justify-content: center; }
-        #photoModal img { max-width: 85%; max-height: 85%; border-radius: 10px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+        #photoModal img { max-width: 85%; max-height: 85%; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
 
-        footer { background-color: #f8f9fb !important; color: #666 !important; border-top: 1px solid #eee; }
+        footer { background-color: #f8f9fb; color: #888 !important; border-top: 1px solid #eee; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-2">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="index.html" id="nav-brand">PRO LOCO ALBANO</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-1">
+    <div class="container-fluid px-4"> <a class="navbar-brand fw-bold" href="index.html" id="nav-brand">PRO LOCO ALBANO</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto align-items-center">
-                <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="chi-siamo.html">Chi siamo</a></li>
                 <li class="nav-item"><a class="nav-link" href="eventi.html">Eventi</a></li>
                 <li class="nav-item"><a class="nav-link" href="biblioteca.html">Biblioteca</a></li>
@@ -100,7 +88,7 @@
                 <li class="nav-item"><a class="nav-link" href="cosa-fare.html">Cosa fare</a></li>
                 <li class="nav-item"><a class="nav-link" href="dove-dormire.html">Dormire</a></li>
                 <li class="nav-item"><a class="nav-link" href="dove-mangiare.html">Mangiare</a></li>
-                <li class="nav-item"><a class="nav-link" href="guestbook.html" style="color: var(--accent-color) !important;"><i class="fas fa-pen-fancy"></i> Diario di Bordo</a></li>
+                <li class="nav-item"><a class="nav-link" href="guestbook.html" style="color: var(--accent-color) !important;"><i class="fas fa-pen-fancy"></i> Diario</a></li>
             </ul>
         </div>
     </div>
@@ -108,16 +96,16 @@
 
 <header class="hero-section" id="hero-bg">
     <div class="container text-center">
-        <h1 class="display-3 fw-bold" id="hero-titolo"></h1>
-        <p class="lead fs-2" id="hero-sottotitolo"></p>
+        <h1 class="display-4 fw-bold" id="hero-titolo"></h1>
+        <p class="lead" id="hero-sottotitolo"></p>
     </div>
 </header>
 
-<section class="container my-5 py-5 text-center">
+<section class="container my-5 py-4 text-center">
     <h2 class="section-title" id="mission-titolo">La nostra Mission</h2>
     <div class="row justify-content-center">
         <div class="col-md-9">
-            <p class="lead" id="mission-testo" style="color: #666;">Caricamento in corso...</p>
+            <p class="lead" id="mission-testo" style="color: #666;">Caricamento...</p>
         </div>
     </div>
 </section>
@@ -125,94 +113,20 @@
 <section style="background-color: var(--light-bg);" class="py-5">
     <div class="container text-center">
         <h2 class="section-title">Alcuni dei nostri eventi</h2>
-        <div id="attivita-lista" class="mt-4 d-flex flex-wrap justify-content-center">
-            </div>
+        <div id="attivita-lista" class="mt-3 d-flex flex-wrap justify-content-center"></div>
     </div>
 </section>
 
-<section class="container my-5 py-5 text-center">
+<section class="container my-5 py-4 text-center">
     <h2 class="section-title" id="biblio-titolo">Biblioteca Pro Loco</h2>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <p class="lead mb-4" id="biblio-testo"></p>
-            <img id="chi-siamo-img" src="" class="img-fluid rounded shadow" style="max-height:450px; border: 8px solid white;">
+            <img id="chi-siamo-img" src="" class="img-fluid rounded shadow-sm" style="max-height:400px; border: 6px solid white;">
         </div>
     </div>
 </section>
 
 <section style="background-color: var(--light-bg);" class="py-5">
-    <div class="container my-5">
-        <h2 class="section-title" id="gallery-titolo">Galleria Fotografica</h2>
-        <div class="row g-4" id="gallery-container">
-            </div>
-    </div>
-</section>
-
-<footer class="py-5 text-center">
-    <div class="container">
-        <p id="footer-text" class="mb-2"></p>
-        <p>Email: <strong id="contatto-mail" style="color: var(--primary-color);"></strong></p>
-    </div>
-</footer>
-
-<div id="photoModal" onclick="this.style.display='none'"><img id="modalImg" src=""></div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-    async function caricaDati() {
-        try {
-            const response = await fetch('./contenuti-vetrina.json?v=' + new Date().getTime());
-            const data = await response.json();
-
-            // Assegnazione testi dal JSON
-            document.getElementById('nav-brand').innerHTML = data.nomeProLoco || "PRO LOCO ALBANO";
-            document.getElementById('hero-titolo').innerText = data.heroTitolo || "";
-            document.getElementById('hero-sottotitolo').innerText = data.heroSottotitolo || "";
-            document.getElementById('mission-titolo').innerText = data.sezioneMissionTitolo || "Mission";
-            document.getElementById('mission-testo').innerText = data.sezioneMissionTesto || "";
-            document.getElementById('biblio-titolo').innerText = data.sezioneBibliotecaTitolo || "Biblioteca";
-            document.getElementById('biblio-testo').innerText = data.sezioneBibliotecaTesto || "";
-            document.getElementById('gallery-titolo').innerText = data.sezioneGalleryTitolo || "Gallery";
-            document.getElementById('contatto-mail').innerText = data.emailContatto || "";
-            document.getElementById('footer-text').innerHTML = "© 2026 " + (data.nomeProLoco || "Pro Loco Albano");
-
-            // Immagini principali
-            if(data.fotoSfondo) {
-                document.getElementById('hero-bg').style.backgroundImage = "linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('./" + data.fotoSfondo + "')";
-            }
-            if(data.fotoCentrale) {
-                document.getElementById('chi-siamo-img').src = "./" + data.fotoCentrale;
-            }
-
-            // Generazione Badge Eventi
-            if(data.sezioneAttivitaElenco) {
-                const attivita = data.sezioneAttivitaElenco.split(',');
-                document.getElementById('attivita-lista').innerHTML = attivita.map(item => 
-                    `<div class="badge-evento">${item.trim()}</div>`).join('');
-            }
-
-            // Generazione Gallery (8 foto)
-            if(data.fotoGallery) {
-                const galleryBox = document.getElementById('gallery-container');
-                galleryBox.innerHTML = data.fotoGallery.map(file => `
-                    <div class="col-6 col-md-3">
-                        <img src="./${file}" class="gallery-img shadow-sm" onclick="mostraFoto('./${file}')" onerror="this.src='https://via.placeholder.com/400x300?text=Immagine'">
-                    </div>`).join('');
-            }
-
-        } catch (error) {
-            console.error("Errore nel caricamento:", error);
-        }
-    }
-
-    function mostraFoto(percorso) {
-        document.getElementById('modalImg').src = percorso;
-        document.getElementById('photoModal').style.display = 'flex';
-    }
-
-    caricaDati();
-</script>
-
-</body>
-</html>
+    <div class="container my-4">
+        <h2 class="section-title"
