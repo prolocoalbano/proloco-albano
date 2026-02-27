@@ -178,6 +178,7 @@
             document.getElementById('mission-img-tag').src = "./" + data.fotoCentrale;
             document.getElementById('biblio-titolo').innerText = data.sezioneBibliotecaTitolo || "Biblioteca";
             document.getElementById('biblio-testo').innerText = data.sezioneBibliotecaTesto || "";
+            document.getElementById('biblio-img-tag').src = "./" + (data.fotoBiblioteca || data.fotoCentrale);
             document.getElementById('gallery-titolo').innerText = data.sezioneGalleryTitolo || "Gallery";
             document.getElementById('contatto-mail').innerText = data.emailContatto || "";
             document.getElementById('footer-text').innerHTML = "© 2026 " + (data.nomeProLoco || "Pro Loco Albano");
