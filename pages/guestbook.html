@@ -39,8 +39,27 @@
             color: white; text-align: center;
         }
 
-        .section-title { color: var(--primary-color); font-weight: bold; margin-bottom: 2rem; text-align: center; position: relative; padding-bottom: 15px; }
-        .section-title::after { content: ''; width: 40px; height: 3px; background: #ccd1d9; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
+        /* Applica lo stile al titolo della sezione */
+.section-title { 
+    color: var(--primary-color); 
+    font-weight: bold; 
+    margin-bottom: 2rem; 
+    text-align: center; /* Centra il testo del titolo */
+    position: relative; 
+    padding-bottom: 15px; 
+}
+
+/* Crea il trattino grigio (::after) e lo posiziona sotto */
+.section-title::after { 
+    content: ''; 
+    width: 40px; /* Larghezza del trattino */
+    height: 3px; /* Spessore del trattino */
+    background: #ccd1d9; /* Colore grigio chiaro */
+    position: absolute; 
+    bottom: 0; 
+    left: 50%; /* Sposta l'inizio del trattino al 50% della larghezza */
+    transform: translateX(-50%); /* Lo sposta indietro della metà della sua larghezza per centrarlo perfettamente */
+}
 
         /* STILI SPECIFICI GUESTBOOK */
         .message-card { 
