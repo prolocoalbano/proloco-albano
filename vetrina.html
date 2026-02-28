@@ -197,13 +197,19 @@
                     `<div class="badge-evento">${item.trim()}</div>`).join('');
             }
 
-            if(data.fotoGallery) {
-                const galleryBox = document.getElementById('gallery-container');
-                galleryBox.innerHTML = data.fotoGallery.map(file => `
-                    <div class="col-6 col-md-3">
-                        <img src="./${file}" class="gallery-img shadow-sm" onclick="mostraFoto('./${file}')" onerror="this.src='https://via.placeholder.com/400x300?text=Immagine'">
-                    </div>`).join('');
-            }
+           if(data.fotoGallery) {
+    const galleryBox = document.getElementById('gallery-container');
+    galleryBox.innerHTML = data.fotoGallery.map(file => `
+        <div class="col">
+            <img src="./${file}" 
+                 class="gallery-img shadow-sm" 
+                 data-bs-toggle="modal" 
+                 data-bs-target="#photoModal" 
+                 onclick="document.getElementById('modalImg').src = this.src"
+                 onerror="this.src='https://via.placeholder.com/400x300?text=Immagine'">
+        </div>`
+    ).join('');
+}
 
         } catch (error) { console.error("Errore:", error); }
     }
