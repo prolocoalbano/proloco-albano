@@ -124,17 +124,45 @@
 
 <footer class="py-5 text-center" style="background-color: var(--primary-color); color: white;">
     <div class="container">
-        <p id="footer-text" class="mb-1"></p>
-        <p>Email: <strong id="contatto-mail" style="color: white !important;"></strong></p>
+        <p id="footer-text" class="mb-1" style="color: white;"></p>
+        
+        <p style="color: white;">Email: <strong id="contatto-mail" style="color: white !important;"></strong></p>
     </div>
 </footer>
+
+<div class="modal fade" id="photoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content" style="background: transparent; border: none; position: relative;">
+            <button type="button" class="btn-close btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-body p-0 text-center">
+                <img id="modalImg" src="" class="img-fluid rounded shadow-lg" style="max-height: 85vh; object-fit: contain;">
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    async function caricaDatiPagina() {
+    async function caricaDati() {
         try {
-            // NOTE: fetch con '../' perché i file sono nella cartella principale (root)
+            const response = await fetch('./contenuti-vetrina.json?v=' + new Date().getTime());
+            const data = await response.json();
+
+            // Testi
+            document.getElementById('nav-brand').innerHTML = data.nomeProLoco || "Associazione Turistica Pro Loco<br>di Albano di Lucania";
             
-            // 1. Carica dati della Vetrina per uniformare i testi istituzionali
-            const resVetrina = await fetch('../contenuti-vetrina.json
+            
+            document.getElementById('contatto-mail').innerText = data.emailContatto || "";
+            document.getElementById('footer-text').innerHTML = "© 2026 " + (data.nomeProLoco || "Pro Loco Albano");
+
+           
+            `).join('');
+            }
+
+        } catch (error) { console.error("Errore:", error); }
+    }
+    caricaDati();
+</script>
+</body>
+</html>
