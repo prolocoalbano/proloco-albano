@@ -8,8 +8,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --primary-color: #5d9cec; --accent-color: #4fc1e9; --light-bg: #f5f9ff; }
-        body { font-family: 'Segoe UI', sans-serif; color: #4a4a4a; }
-        .navbar-brand { color: var(--primary-color) !important; font-weight: bold; line-height: 1.2; font-size: 1.2rem !important; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; color: var(--text-dark); background-color: #fff; overflow-x: hidden; }
+                body { font-family: 'Segoe UI', Tahoma, sans-serif; color: var(--text-dark); background-color: #fff; overflow-x: hidden; }
+
+        /* NAVBAR */
+        .navbar { border-bottom: 1px solid #eee; background: white !important; }
+        .navbar-brand { 
+    color: var(--primary-color) !important; 
+    font-size: 1.2rem !important; /* Dimensioni testo nome Associazione*/
+    font-weight: bold;
+    line-height: 1.2; /* Avvicina le due righe del nome */
+    display: inline-block;
+}
+
+       
         .nav-link { font-weight: 600; font-size: 0.85rem !important; text-transform: uppercase; color: #666 !important; padding: 5px 8px !important; }
         .hero-section { background: var(--primary-color); height: 35vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; background-size: cover; background-position: center; }
         .section-title { color: var(--primary-color); font-weight: bold; margin-bottom: 2rem; position: relative; padding-bottom: 15px; }
