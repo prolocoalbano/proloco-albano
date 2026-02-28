@@ -124,45 +124,58 @@
 
 <footer class="py-5 text-center" style="background-color: var(--primary-color); color: white;">
     <div class="container">
-        <p id="footer-text" class="mb-1" style="color: white;"></p>
-        
-        <p style="color: white;">Email: <strong id="contatto-mail" style="color: white !important;"></strong></p>
+        <p id="footer-text" class="mb-1"></p>
+        <p>Email: <strong id="contatto-mail" style="color: white !important;"></strong></p>
     </div>
 </footer>
-
-<div class="modal fade" id="photoModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content" style="background: transparent; border: none; position: relative;">
-            <button type="button" class="btn-close btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
-            <div class="modal-body p-0 text-center">
-                <img id="modalImg" src="" class="img-fluid rounded shadow-lg" style="max-height: 85vh; object-fit: contain;">
-            </div>
-        </div>
-    </div>
-</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    async function caricaDati() {
+    async function caricaDatiPagina() {
         try {
-            const response = await fetch('./contenuti-vetrina.json?v=' + new Date().getTime());
-            const data = await response.json();
-
-            // Testi
-            document.getElementById('nav-brand').innerHTML = data.nomeProLoco || "Associazione Turistica Pro Loco<br>di Albano di Lucania";
+            // NOTE: fetch con '../' perché i file sono nella cartella principale (root)
             
+            // 1. Carica dati della Vetrina per uniformare i testi istituzionali
+            const resVetrina = await fetch('../contenuti-vetrina.json');
+            const dataV = await resVetrina.json();
             
-            document.getElementById('contatto-mail').innerText = data.emailContatto || "";
-            document.getElementById('footer-text').innerHTML = "© 2026 " + (data.nomeProLoco || "Pro Loco Albano");
+            // Applica nome Pro Loco (alto a sx) e footer
+            document.getElementById('nav-brand').innerHTML = dataV.nomeProLoco || "Associazione Turistica Pro Loco<br>di Albano di Lucania";
+            document.getElementById('contatto-mail').innerText = dataV.emailContatto || "";
+            document.getElementById('footer-text').innerHTML = "© 2026 " + (dataV.nomeProLoco || "Pro Loco Albano");
 
-           
-            `).join('');
+            // 2. Carica messaggi del Guestbook dalla cartella 'dati'
+            const resGuest = await fetch('../dati/guestbook.json?v=' + new Date().getTime());
+            const messaggi = await resGuest.json();
+
+            const container = document.getElementById('lista-messaggi');
+            if (messaggi.length === 0) {
+                container.innerHTML = "<p class='text-muted'>Nessun messaggio presente.</p>";
+            } else {
+                container.innerHTML = messaggi.map(m => `
+                    <div class="message-card">
+                        <div class="d-flex justify-content-between mb-2">
+                            <strong style="color: var(--primary-color);">${m.nome}</strong>
+                            <small class="text-muted">${m.data}</small>
+                        </div>
+                        <p class="mb-0" style="font-style: italic; color: #555;">"${m.testo}"</p>
+                    </div>
+                `).join('');
             }
 
-        } catch (error) { console.error("Errore:", error); }
+        } catch (error) { console.error("Errore caricamento dati:", error); }
     }
-    caricaDati();
+
+    // Gestione simulata invio modulo
+    document.getElementById('guestbookForm').onsubmit = function(e) {
+        e.preventDefault();
+        document.getElementById('msg-conferma').classList.remove('d-none');
+        this.reset();
+    };
+
+    // Avvio funzione
+    caricaDatiPagina();
 </script>
 </body>
 </html>
