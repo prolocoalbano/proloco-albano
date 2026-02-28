@@ -16,65 +16,52 @@
             --text-dark: #4a4a4a;
         } 
         
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; color: var(--text-dark); background-color: #fff; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; color: var(--text-dark); background-color: #fff; overflow-x: hidden; }
 
-        /* NAVBAR: OTTIMIZZATA PER 9 VOCI */
+        /* NAVBAR */
         .navbar { border-bottom: 1px solid #eee; background: white !important; }
-        
-        .navbar-brand { 
-            color: var(--primary-color) !important; 
-            font-size: 1rem; 
-            font-weight: bold;
-        }
-
+        .navbar-brand { color: var(--primary-color) !important; font-size: 1rem; font-weight: bold; }
         .nav-link { 
-            font-weight: 600; 
-            font-size: 0.85rem !important; /* DIMENSIONE RIDOTTA PER EQUILIBRIO */
-            text-transform: uppercase; /* Maiuscoletto per massima leggibilità a dimensioni piccole */
-            color: #666 !important; 
-            padding: 5px 8px !important; /* SPAZIO TRA LE VOCI RIDOTTO */
-            transition: 0.3s; 
-            letter-spacing: 0.3px;
+            font-weight: 600; font-size: 0.85rem !important; text-transform: uppercase; 
+            color: #666 !important; padding: 5px 8px !important; transition: 0.3s; letter-spacing: 0.3px;
         }
-        
-        .nav-link:hover { color: var(--primary-color) !important; }
 
         /* HERO SECTION */
         .hero-section { 
-            background: var(--primary-color);
-            background-size: cover; background-position: center; height: 45vh; 
-            display: flex; align-items: center; justify-content: center; 
+            background: var(--primary-color); background-size: cover; background-position: center; 
+            height: 45vh; display: flex; align-items: center; justify-content: center; 
             color: white; text-align: center;
         }
 
         .section-title { color: var(--primary-color); font-weight: bold; margin-bottom: 2rem; text-align: center; position: relative; padding-bottom: 15px; }
         .section-title::after { content: ''; width: 40px; height: 3px; background: #ccd1d9; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
 
-        /* EVENTI */
+        /* EVENTI BADGES */
         .badge-evento { 
-            background: white; color: var(--primary-color); 
-            padding: 12px 25px; border-radius: 10px; 
-            font-size: 1.1rem; font-weight: bold;
-            display: inline-block; margin: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            border: 1px solid #eef2f7;
-            transition: 0.3s ease;
+            background: white; color: var(--primary-color); padding: 12px 25px; border-radius: 10px; 
+            font-size: 1.1rem; font-weight: bold; display: inline-block; margin: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #eef2f7; transition: 0.3s;
         }
         .badge-evento:hover { transform: translateY(-3px); background: var(--primary-color); color: white; }
 
-        /* GALLERY */
-        .gallery-img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; cursor: pointer; transition: 0.3s; }
-        
-        #photoModal { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.98); align-items: center; justify-content: center; }
-        #photoModal img { max-width: 85%; max-height: 85%; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        /* GALLERY COMPATTA */
+        .gallery-img { 
+            width: 100%; height: 160px; object-fit: cover; border-radius: 6px; 
+            cursor: pointer; transition: 0.3s; border: 2px solid white;
+        }
+        .gallery-img:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
 
-        footer { background-color: #f8f9fb; color: #888 !important; border-top: 1px solid #eee; font-size: 0.9rem; }
+        /* STILE MODAL AZZURRO */
+        .modal-backdrop.show { background-color: rgba(93, 156, 236, 0.9); }
+        
+        footer { background-color: #f8f9fb; border-top: 1px solid #eee; padding: 40px 0; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-1">
-    <div class="container-fluid px-4"> <a class="navbar-brand fw-bold" href="index.html" id="nav-brand">PRO LOCO ALBANO</a>
+    <div class="container-fluid px-4"> 
+        <a class="navbar-brand fw-bold" href="index.html" id="nav-brand">PRO LOCO ALBANO</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -101,45 +88,41 @@
     </div>
 </header>
 
-<section class="container my-5 py-4">
+<section class="container my-5 py-4 text-center">
     <h2 class="section-title" id="mission-titolo">La nostra Mission</h2>
-    
     <div class="row g-0 mt-4 shadow-sm mx-auto col-md-11" style="border-radius: 15px; overflow: hidden; border: 1px solid #eee;">
         <div class="col-md-4 px-0">
             <img id="mission-img-tag" src="" style="width: 100%; height: 100%; min-height: 300px; object-fit: cover; display: block;">
         </div>
-        
         <div class="col-md-8 d-flex align-items-center" style="background-color: var(--light-bg); padding: 40px;">
             <p class="lead" id="mission-testo" style="color: #666; margin: 0; text-align: left;"></p>
         </div>
     </div>
 </section>
 
-<section class="container my-5 py-4">
-    <h2 class="section-title" id="biblio-titolo">Biblioteca Pro Loco</h2>
-    
-    <div class="row g-0 mt-4 shadow-sm mx-auto col-md-11" style="border-radius: 15px; overflow: hidden; border: 1px solid #eee; flex-direction: row-reverse;">
-        <div class="col-md-4 px-0">
-            <img id="biblio-img-tag" src="" style="width: 100%; height: 100%; min-height: 300px; object-fit: cover; display: block;">
-        </div>
-        
-        <div class="col-md-8 d-flex align-items-center" style="background-color: var(--light-bg); padding: 40px;">
-            <p class="lead" id="biblio-testo" style="color: #666; margin: 0; text-align: left;"></p>
-        </div>
-    </div>
-</section>
-    
-    <section style="background-color: var(--light-bg);" class="py-5">
+<section style="background-color: var(--light-bg);" class="py-5">
     <div class="container text-center">
         <h2 class="section-title">Alcuni dei nostri eventi</h2>
         <div id="attivita-lista" class="mt-3 d-flex flex-wrap justify-content-center"></div>
     </div>
 </section>
 
-<section style="background-color: var(--light-bg);" class="py-5">
+<section class="container my-5 py-4 text-center">
+    <h2 class="section-title" id="biblio-titolo">Biblioteca Pro Loco</h2>
+    <div class="row g-0 mt-4 shadow-sm mx-auto col-md-11" style="border-radius: 15px; overflow: hidden; border: 1px solid #eee; flex-direction: row-reverse;">
+        <div class="col-md-4 px-0">
+            <img id="biblio-img-tag" src="" style="width: 100%; height: 100%; min-height: 300px; object-fit: cover; display: block;">
+        </div>
+        <div class="col-md-8 d-flex align-items-center" style="background-color: var(--light-bg); padding: 40px;">
+            <p class="lead" id="biblio-testo" style="color: #666; margin: 0; text-align: left;"></p>
+        </div>
+    </div>
+</section>
+
+<section style="background-color: #fff;" class="py-5">
     <div class="container my-4">
         <h2 class="section-title" id="gallery-titolo">Galleria Fotografica</h2>
-        <div class="row g-3" id="gallery-container"></div>
+        <div class="row row-cols-2 row-cols-md-4 row-cols-lg-6 g-2" id="gallery-container"></div>
     </div>
 </section>
 
@@ -153,11 +136,9 @@
 <div class="modal fade" id="photoModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content" style="background: transparent; border: none;">
-            
-            <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close" style="z-index: 1060; font-size: 1.5rem;"></button>
-            
+            <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal"></button>
             <div class="modal-body p-0 text-center">
-                <img id="modalImg" src="" class="img-fluid rounded shadow-lg" style="max-height: 85vh; object-fit: contain;" alt="Ingrandimento">
+                <img id="modalImg" src="" class="img-fluid rounded shadow-lg" style="max-height: 85vh; object-fit: contain;">
             </div>
         </div>
     </div>
@@ -171,56 +152,45 @@
             const response = await fetch('./contenuti-vetrina.json?v=' + new Date().getTime());
             const data = await response.json();
 
-            document.getElementById('nav-brand').innerHTML = data.nomeProLoco || "PRO LOCO ALBANO";
+            // Testi
+            document.getElementById('nav-brand').innerText = data.nomeProLoco || "PRO LOCO";
             document.getElementById('hero-titolo').innerText = data.heroTitolo || "";
             document.getElementById('hero-sottotitolo').innerText = data.heroSottotitolo || "";
             document.getElementById('mission-titolo').innerText = data.sezioneMissionTitolo || "Mission";
             document.getElementById('mission-testo').innerText = data.sezioneMissionTesto || "";
-            document.getElementById('mission-img-tag').src = "./" + data.fotoMission;
             document.getElementById('biblio-titolo').innerText = data.sezioneBibliotecaTitolo || "Biblioteca";
             document.getElementById('biblio-testo').innerText = data.sezioneBibliotecaTesto || "";
-            document.getElementById('biblio-img-tag').src = "./" + (data.fotoBiblioteca || data.fotoCentrale);
             document.getElementById('gallery-titolo').innerText = data.sezioneGalleryTitolo || "Gallery";
             document.getElementById('contatto-mail').innerText = data.emailContatto || "";
             document.getElementById('footer-text').innerHTML = "© 2026 " + (data.nomeProLoco || "Pro Loco Albano");
 
-            if(data.fotoSfondo) {
-                document.getElementById('hero-bg').style.backgroundImage = "linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('./" + data.fotoSfondo + "')";
-            }
-            if(data.fotoCentrale) {
-                document.getElementById('chi-siamo-img').src = "./" + data.fotoCentrale;
-            }
+            // Immagini Sezioni
+            if(data.fotoSfondo) document.getElementById('hero-bg').style.backgroundImage = "linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('./" + data.fotoSfondo + "')";
+            if(data.fotoMission) document.getElementById('mission-img-tag').src = "./" + data.fotoMission;
+            if(data.fotoBiblioteca) document.getElementById('biblio-img-tag').src = "./" + data.fotoBiblioteca;
 
+            // Eventi
             if(data.sezioneAttivitaElenco) {
                 const attivita = data.sezioneAttivitaElenco.split(',');
                 document.getElementById('attivita-lista').innerHTML = attivita.map(item => 
-                    `<div class="badge-evento">${item.trim()}</div>`).join('');
+                    `<div class="badge-evento shadow-sm">${item.trim()}</div>`).join('');
             }
 
-           if(data.fotoGallery) {
-    const galleryBox = document.getElementById('gallery-container');
-    galleryBox.innerHTML = data.fotoGallery.map(file => `
-        <div class="col">
-            <img src="./${file}" 
-                 class="gallery-img shadow-sm" 
-                 data-bs-toggle="modal" 
-                 data-bs-target="#photoModal" 
-                 onclick="document.getElementById('modalImg').src = this.src"
-                 onerror="this.src='https://via.placeholder.com/400x300?text=Immagine'">
-        </div>`
-    ).join('');
-}
+            // Galleria
+            if(data.fotoGallery) {
+                const galleryBox = document.getElementById('gallery-container');
+                galleryBox.innerHTML = data.fotoGallery.map(file => `
+                    <div class="col">
+                        <img src="./${file}" class="gallery-img shadow-sm" 
+                             data-bs-toggle="modal" data-bs-target="#photoModal" 
+                             onclick="document.getElementById('modalImg').src = this.src"
+                             onerror="this.src='https://via.placeholder.com/400x300?text=Immagine'">
+                    </div>`).join('');
+            }
 
         } catch (error) { console.error("Errore:", error); }
     }
-
-    function mostraFoto(percorso) {
-        document.getElementById('modalImg').src = percorso;
-        document.getElementById('photoModal').style.display = 'flex';
-    }
-
     caricaDati();
 </script>
-
 </body>
 </html>
