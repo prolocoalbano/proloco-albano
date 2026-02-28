@@ -31,7 +31,7 @@
             color: #666 !important; padding: 5px 8px !important;
         }
 
-        /* HERO PERSONALIZZABILE DA JSON */
+        /* HERO PERSONALIZZABILE */
         .page-header { 
             background: var(--primary-color); 
             background-size: cover; 
@@ -39,7 +39,6 @@
             padding: 80px 0; 
             color: white; 
             text-align: center; 
-            position: relative;
         }
 
         /* GUESTBOOK STYLE */
@@ -52,15 +51,6 @@
             position: sticky;
             top: 100px;
         }
-        .form-control { border: 1px solid #eee; padding: 12px; border-radius: 8px; }
-        .btn-invia { 
-            background-color: var(--primary-color); 
-            border: none; padding: 12px 30px; 
-            border-radius: 50px; font-weight: bold; 
-            transition: 0.3s; width: 100%;
-        }
-        .btn-invia:hover { background-color: #4a89dc; transform: translateY(-2px); }
-
         .messaggio-box { 
             background: var(--light-bg); 
             border-left: 5px solid var(--primary-color); 
@@ -73,7 +63,7 @@
         .messaggio-autore { font-weight: bold; color: var(--primary-color); font-size: 1.1rem; }
         .messaggio-data { font-size: 0.85rem; color: #999; }
 
-        /* FOOTER BLU (Coerente con Home) */
+        /* FOOTER BLU (Identico alla Home) */
         footer { background-color: var(--primary-color); padding: 50px 0; color: white; text-align: center; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -83,13 +73,13 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-1">
     <div class="container-fluid px-4"> 
-        <a class="navbar-brand fw-bold" href="index.html" id="nav-brand">Associazione Turistica Pro Loco<br>di Albano di Lucania</a>
+        <a class="navbar-brand fw-bold" href="../index.html" id="nav-brand">Associazione Turistica Pro Loco<br>di Albano di Lucania</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto align-items-center">
-                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="chi-siamo.html">Chi siamo</a></li>
                 <li class="nav-item"><a class="nav-link" href="eventi.html">Eventi</a></li>
                 <li class="nav-item"><a class="nav-link" href="guestbook.html" style="color: var(--primary-color) !important;"><i class="fas fa-pen-fancy"></i> Diario</a></li>
@@ -119,7 +109,7 @@
                         <label class="form-label fw-bold">Il tuo messaggio</label>
                         <textarea class="form-control" id="messaggio" rows="5" required placeholder="Raccontaci la tua esperienza..."></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-invia">Pubblica nel Diario</button>
+                    <button type="submit" class="btn btn-primary btn-invia shadow" style="background-color: var(--primary-color); border:none; border-radius:30px; padding:10px;">Pubblica nel Diario</button>
                 </form>
             </div>
         </div>
@@ -142,20 +132,21 @@
 <script>
     async function caricaPagina() {
         try {
-            const response = await fetch('./contenuti-vetrina.json?v=' + new Date().getTime());
+            // USIAMO ../ PER USCIRE DALLA CARTELLA PAGES
+            const response = await fetch('../contenuti-vetrina.json?v=' + new Date().getTime());
             const data = await response.json();
 
-            // Configurazione Testata e Testi
+            // Immagine Hero (Aggiungiamo ../ al percorso della foto nel JSON)
             if(data.fotoHeroGuestbook) {
                 document.getElementById('hero-guestbook').style.backgroundImage = 
-                    `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./${data.fotoHeroGuestbook}')`;
+                    `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../${data.fotoHeroGuestbook}')`;
             }
             
-            document.getElementById('nav-brand').innerHTML = data.nomeProLoco || "Associazione Turistica Pro Loco<br>di Albano di Lucania";
-            document.getElementById('contatto-mail').innerText = data.emailContatto || "";
-            document.getElementById('footer-text').innerHTML = "© 2026 " + (data.nomeProLoco || "Pro Loco Albano");
+            document.getElementById('nav-brand').innerHTML = data.nomeProLoco;
+            document.getElementById('contatto-mail').innerText = data.emailContatto;
+            document.getElementById('footer-text').innerHTML = "© 2026 " + data.nomeProLoco.replace("<br>", " ");
 
-            // Messaggi predefiniti (opzionali da JSON)
+            // Messaggi iniziali dal JSON
             if(data.messaggiIniziali) {
                 data.messaggiIniziali.forEach(msg => aggiungiMessaggio(msg.nome, msg.testo, msg.data));
             }
@@ -171,7 +162,7 @@
                     <div class="messaggio-autore">${nome}</div>
                     <div class="messaggio-data">${data}</div>
                 </div>
-                <p class="mb-0 italic" style="font-style: italic;">"${testo}"</p>
+                <p class="mb-0" style="font-style: italic; color: #555;">"${testo}"</p>
             </div>
         `;
         lista.insertAdjacentHTML('afterbegin', box);
@@ -185,11 +176,9 @@
 
         aggiungiMessaggio(nome, testo, dataOggi);
         this.reset();
-        window.scrollTo({ top: document.getElementById('lista-messaggi').offsetTop - 150, behavior: 'smooth' });
     });
 
     caricaPagina();
 </script>
-
 </body>
 </html>
