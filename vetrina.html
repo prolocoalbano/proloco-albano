@@ -159,7 +159,7 @@
             const data = await response.json();
 
             // Testi
-            document.getElementById('nav-brand').innerText = data.nomeProLoco || "PRO LOCO";
+            document.getElementById('nav-brand').innerHTML = data.nomeProLoco || "Associazione Turistica Pro Loco<br>di Albano di Lucania";
             document.getElementById('hero-titolo').innerText = data.heroTitolo || "";
             document.getElementById('hero-sottotitolo').innerText = data.heroSottotitolo || "";
             document.getElementById('mission-titolo').innerText = data.sezioneMissionTitolo || "Mission";
