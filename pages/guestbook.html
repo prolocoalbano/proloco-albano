@@ -3,40 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diario di Bordo - Pro Loco Albano</title>
+    <title>Diario di Bordo - Pro Loco Albano di Lucania</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root { --primary-color: #5d9cec; --accent-color: #4fc1e9; --light-bg: #f5f9ff; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; color: var(--text-dark); background-color: #fff; overflow-x: hidden; }
-                body { font-family: 'Segoe UI', Tahoma, sans-serif; color: var(--text-dark); background-color: #fff; overflow-x: hidden; }
 
-        /* NAVBAR */
+    <style>
+        :root { 
+            --primary-color: #5d9cec; 
+            --accent-color: #4fc1e9;
+            --light-bg: #f5f9ff;
+            --text-dark: #4a4a4a;
+        } 
+        
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; color: var(--text-dark); background-color: #fff; overflow-x: hidden; }
+
+        /* NAVBAR (Presa dal tuo Master Template) */
         .navbar { border-bottom: 1px solid #eee; background: white !important; }
         .navbar-brand { 
-    color: var(--primary-color) !important; 
-    font-size: 1.2rem !important; /* Dimensioni testo nome Associazione*/
-    font-weight: bold;
-    line-height: 1.2; /* Avvicina le due righe del nome */
-    display: inline-block;
-}
+            color: var(--primary-color) !important; 
+            font-size: 1.2rem !important; 
+            font-weight: bold;
+            line-height: 1.2; 
+            display: inline-block;
+        }
+        .nav-link { 
+            font-weight: 600; font-size: 0.85rem !important; text-transform: uppercase; 
+            color: #666 !important; padding: 5px 8px !important; transition: 0.3s; letter-spacing: 0.3px;
+        }
 
-       
-        .nav-link { font-weight: 600; font-size: 0.85rem !important; text-transform: uppercase; color: #666 !important; padding: 5px 8px !important; }
-        .hero-section { background: var(--primary-color); height: 35vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; background-size: cover; background-position: center; }
-        .section-title { color: var(--primary-color); font-weight: bold; margin-bottom: 2rem; position: relative; padding-bottom: 15px; }
-        .section-title::after { content: ''; width: 40px; height: 3px; background: #ccd1d9; position: absolute; bottom: 0; left: 0; }
-        .message-card { background: var(--light-bg); border-radius: 12px; padding: 20px; margin-bottom: 20px; border-left: 5px solid var(--primary-color); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        .form-container { background: #fff; border: 1px solid #eee; border-radius: 15px; padding: 30px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
-        .btn-invia { background: var(--primary-color); color: white; border-radius: 50px; font-weight: bold; padding: 12px; border: none; width: 100%; transition: 0.3s; }
-        footer { background: var(--primary-color); color: white; padding: 40px 0; text-align: center; margin-top: 50px; }
+        /* HERO SECTION (Adattata per pagine interne) */
+        .hero-section { 
+            background: var(--primary-color); background-size: cover; background-position: center; 
+            height: 35vh; display: flex; align-items: center; justify-content: center; 
+            color: white; text-align: center;
+        }
+
+        .section-title { color: var(--primary-color); font-weight: bold; margin-bottom: 2rem; text-align: center; position: relative; padding-bottom: 15px; }
+        .section-title::after { content: ''; width: 40px; height: 3px; background: #ccd1d9; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
+
+        /* STILI SPECIFICI GUESTBOOK */
+        .message-card { 
+            background: var(--light-bg); border-radius: 12px; padding: 25px; 
+            margin-bottom: 25px; border-left: 5px solid var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .form-container {
+            background: #fff; border: 1px solid #eee; border-radius: 15px; padding: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+        .btn-invia {
+            background-color: var(--primary-color); color: white; border-radius: 50px;
+            font-weight: bold; padding: 12px 30px; border: none; transition: 0.3s; width: 100%;
+        }
+        .btn-invia:hover { background-color: #4a89dc; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+        footer { padding: 40px 0; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-1">
-    <div class="container-fluid px-4">
-        <a class="navbar-brand" href="../index.html" id="nav-brand">PRO LOCO ALBANO</a>
+    <div class="container-fluid px-4"> 
+        <a class="navbar-brand fw-bold" href="../index.html" id="nav-brand">PRO LOCO ALBANO</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -57,26 +86,36 @@
 </nav>
 
 <header class="hero-section" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../immagini/sfondo-guest.jpg');">
-    <div class="container">
+    <div class="container text-center text-white">
         <h1 class="display-4 fw-bold">Diario di Bordo</h1>
-        <p class="lead">Lascia un pensiero sulla tua visita</p>
+        <p class="lead">I pensieri di chi ha visitato il nostro borgo</p>
     </div>
 </header>
 
 <main class="container my-5">
     <div class="row g-5">
         <div class="col-lg-7">
-            <h2 class="section-title">I vostri pensieri</h2>
-            <div id="lista-messaggi"></div>
+            <h2 class="section-title text-start">I vostri pensieri</h2>
+            <div id="lista-messaggi">
+                </div>
         </div>
+
         <div class="col-lg-5">
             <div class="form-container sticky-top" style="top: 110px;">
                 <h3 class="fw-bold mb-4" style="color: var(--primary-color);">Scrivi sul Diario</h3>
-                <form id="guestForm">
-                    <div class="mb-3"><label class="fw-bold small">Nome</label><input type="text" class="form-control" id="autore" required></div>
-                    <div class="mb-3"><label class="fw-bold small">Messaggio</label><textarea class="form-control" id="testo" rows="5" required></textarea></div>
-                    <button type="submit" class="btn-invia">Invia Messaggio</button>
-                    <div id="msg-ok" class="mt-3 text-success d-none small">Grazie! Messaggio inviato.</div>
+                <form id="guestbookForm">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold small">Nome e Cognome</label>
+                        <input type="text" class="form-control" id="autore" placeholder="Esempio: Mario Rossi" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold small">Il tuo messaggio</label>
+                        <textarea class="form-control" id="testo" rows="5" placeholder="Cosa ti ha colpito di Albano?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-invia shadow-sm">Invia Messaggio</button>
+                    <div id="msg-conferma" class="mt-3 text-success d-none">
+                        <i class="fas fa-check-circle"></i> Grazie! Messaggio ricevuto.
+                    </div>
                 </form>
             </div>
         </div>
@@ -85,35 +124,17 @@
 
 <footer class="py-5 text-center" style="background-color: var(--primary-color); color: white;">
     <div class="container">
-        <p id="footer-text" class="mb-1" style="color: white;"></p>
-        
-        <p style="color: white;">Email: <strong id="contatto-mail" style="color: white !important;"></strong></p>
+        <p id="footer-text" class="mb-1"></p>
+        <p>Email: <strong id="contatto-mail" style="color: white !important;"></strong></p>
     </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    async function init() {
+    async function caricaDatiPagina() {
         try {
-            const resV = await fetch('../contenuti-vetrina.json');
-            const dataV = await resV.json();
-            document.getElementById('nav-brand').innerHTML = data.nomeProLoco || "Associazione Turistica Pro Loco<br>di Albano di Lucania";
-            document.getElementById('contatto-mail').innerText = data.emailContatto || "";
-            document.getElementById('footer-text').innerHTML = "© 2026 " + (data.nomeProLoco || "Pro Loco Albano");
-
-            const resG = await fetch('../dati/guestbook.json');
-            const messaggi = await resG.json();
-            const box = document.getElementById('lista-messaggi');
-            box.innerHTML = messaggi.map(m => `
-                <div class="message-card">
-                    <div class="d-flex justify-content-between mb-2"><strong>${m.nome}</strong><small>${m.data}</small></div>
-                    <p class="mb-0"><em>"${m.testo}"</em></p>
-                </div>`).join('');
-        } catch (e) { console.error(e); }
-    }
-    document.getElementById('guestForm').onsubmit = (e) => { e.preventDefault(); document.getElementById('msg-ok').classList.remove('d-none'); e.target.reset(); };
-    init();
-</script>
-</body>
-</html>
+            // NOTE: fetch con '../' perché i file sono nella cartella principale (root)
+            
+            // 1. Carica dati della Vetrina per uniformare i testi istituzionali
+            const resVetrina = await fetch('../contenuti-vetrina.json
