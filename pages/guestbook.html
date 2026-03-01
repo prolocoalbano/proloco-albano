@@ -154,24 +154,20 @@
 <script>
     async function caricaDatiPagina() {
         try {
-            // NOTE: fetch con '../' perché i file sono nella cartella principale (root)
-            
-            // 1. Carica dati della Vetrina per uniformare i testi istituzionali
+            // Carica dati Vetrina per Footer e Navbar
             const resVetrina = await fetch('../contenuti-vetrina.json');
             const dataV = await resVetrina.json();
-            
-            // Applica nome Pro Loco (alto a sx) e footer
-            document.getElementById('nav-brand').innerHTML = dataV.nomeProLoco || "Associazione Turistica Pro Loco<br>di Albano di Lucania";
+            document.getElementById('nav-brand').innerHTML = dataV.nomeProLoco || "Pro Loco Albano";
             document.getElementById('contatto-mail').innerText = dataV.emailContatto || "";
             document.getElementById('footer-text').innerHTML = "© 2026 " + (dataV.nomeProLoco || "Pro Loco Albano");
 
-            // 2. Carica messaggi del Guestbook dalla cartella 'dati'
+            // Carica messaggi con un parametro casuale per evitare la cache del browser
             const resGuest = await fetch('../dati/guestbook.json?v=' + new Date().getTime());
             const messaggi = await resGuest.json();
 
             const container = document.getElementById('lista-messaggi');
-            if (messaggi.length === 0) {
-                container.innerHTML = "<p class='text-muted'>Nessun messaggio presente.</p>";
+            if (!messaggi || messaggi.length === 0) {
+                container.innerHTML = "<p class='text-muted'>Ancora nessun messaggio. Sii il primo!</p>";
             } else {
                 container.innerHTML = messaggi.map(m => `
                     <div class="message-card">
@@ -183,18 +179,39 @@
                     </div>
                 `).join('');
             }
-
-        } catch (error) { console.error("Errore caricamento dati:", error); }
+        } catch (error) { console.error("Errore:", error); }
     }
 
-    // Gestione simulata invio modulo
-    document.getElementById('guestbookForm').onsubmit = function(e) {
+    // GESTIONE INVIO REALE AL SERVER
+    document.getElementById('guestbookForm').onsubmit = async function(e) {
         e.preventDefault();
-        document.getElementById('msg-conferma').classList.remove('d-none');
-        this.reset();
+        
+        const datiInviati = {
+            nome: document.getElementById('autore').value,
+            testo: document.getElementById('testo').value
+        };
+
+        try {
+            const response = await fetch('salva_messaggio.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(datiInviati)
+            });
+
+            if (response.ok) {
+                document.getElementById('msg-conferma').classList.remove('d-none');
+                this.reset();
+                // Ricarica la lista per mostrare subito il nuovo messaggio
+                setTimeout(caricaDatiPagina, 500);
+            } else {
+                alert("Errore nel salvataggio del messaggio.");
+            }
+        } catch (error) {
+            console.error("Errore:", error);
+            alert("Il server non risponde. Verifica che il PHP sia attivo.");
+        }
     };
 
-    // Avvio funzione
     caricaDatiPagina();
 </script>
 </body>
