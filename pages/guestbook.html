@@ -113,31 +113,26 @@
 </header>
 
 <main class="container my-5">
-    <div class="row g-5">
-        <div class="col-lg-7">
-            <h2 class="section-title text-start">I vostri pensieri</h2>
-            <div id="lista-messaggi">
-                </div>
-        </div>
-
-        <div class="col-lg-5">
-            <div class="form-container sticky-top" style="top: 110px;">
-                <h3 class="fw-bold mb-4" style="color: var(--primary-color);">Scrivi sul Diario</h3>
-                <form id="guestbookForm">
-                    <div class="mb-3">
-                        <label class="form-label fw-bold small">Nome e Cognome</label>
-                        <input type="text" class="form-control" id="autore" placeholder="Esempio: Mario Rossi" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label fw-bold small">Il tuo messaggio</label>
-                        <textarea class="form-control" id="testo" rows="5" placeholder="Cosa ti ha colpito di Albano?" required></textarea>
-                    </div>
-                    <button type="submit" class="btn-invia shadow-sm">Invia Messaggio</button>
-                    <div id="msg-conferma" class="mt-3 text-success d-none">
-                        <i class="fas fa-check-circle"></i> Grazie! Messaggio ricevuto.
-                    </div>
-                </form>
-            </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <h2 class="section-title">Diario di Bordo</h2>
+            <p class="text-center mb-5">Raccontaci la tua esperienza ad Albano di Lucania. I tuoi pensieri saranno preziosi per noi e per i futuri visitatori.</p>
+            
+            <div id="disqus_thread" class="form-container"></div>
+            
+            <script>
+                var disqus_config = function () {
+                    this.page.url = window.location.href;  
+                    this.page.identifier = 'guestbook_albano'; 
+                };
+                (function() { 
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://IL-TUO-NOME-BREVE.disqus.com/embed.js'; // Sostituiremo questo
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Per favore abilita JavaScript per visualizzare i commenti.</noscript>
         </div>
     </div>
 </main>
