@@ -40,25 +40,26 @@
         }
 
         /* Applica lo stile al titolo della sezione */
+/* --- CSS PER TRATTINO ALLINEATO A SINISTRA --- */
+
 .section-title { 
     color: var(--primary-color); 
     font-weight: bold; 
     margin-bottom: 2rem; 
-    text-align: center; /* Centra il testo del titolo */
+    text-align: left; /* Allinea il testo a sinistra */
     position: relative; 
     padding-bottom: 15px; 
 }
 
-/* Crea il trattino grigio (::after) e lo posiziona sotto */
 .section-title::after { 
     content: ''; 
-    width: 40px; /* Larghezza del trattino */
-    height: 3px; /* Spessore del trattino */
-    background: #ccd1d9; /* Colore grigio chiaro */
+    width: 40px; 
+    height: 3px; 
+    background: #ccd1d9; 
     position: absolute; 
     bottom: 0; 
-    left: 50%; /* Sposta l'inizio del trattino al 50% della larghezza */
-    transform: translateX(-50%); /* Lo sposta indietro della metà della sua larghezza per centrarlo perfettamente */
+    left: 0; /* Lo blocca all'inizio del testo a sinistra */
+    /* Rimosso il transform per evitare che si sposti al centro */
 }
 
         /* STILI SPECIFICI GUESTBOOK */
