@@ -12,13 +12,12 @@
         :root { 
             --primary-color: #5d9cec; 
             --accent-color: #4fc1e9;
-            --light-bg: #f5f9ff;
             --text-dark: #4a4a4a;
         } 
         
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; color: var(--text-dark); background-color: #fff; overflow-x: hidden; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; color: var(--text-dark); background-color: #fff; }
 
-        /* NAVBAR (Presa dal tuo Master Template) */
+        /* NAVBAR - COPIA ESATTA DALLA VETRINA */
         .navbar { border-bottom: 1px solid #eee; background: white !important; }
         .navbar-brand { 
             color: var(--primary-color) !important; 
@@ -32,60 +31,38 @@
             color: #666 !important; padding: 5px 8px !important; transition: 0.3s; letter-spacing: 0.3px;
         }
 
-        /* HERO SECTION (Adattata per pagine interne) */
+        /* HERO INTERNA */
         .hero-section { 
             background: var(--primary-color); background-size: cover; background-position: center; 
             height: 35vh; display: flex; align-items: center; justify-content: center; 
             color: white; text-align: center;
         }
 
-        /* Applica lo stile al titolo della sezione */
-/* --- CSS PER TRATTINO ALLINEATO A SINISTRA --- */
-
-.section-title { 
-    color: var(--primary-color); 
-    font-weight: bold; 
-    margin-bottom: 2rem; 
-    text-align: left; /* Allinea il testo a sinistra */
-    position: relative; 
-    padding-bottom: 15px; 
-}
-
-.section-title::after { 
-    content: ''; 
-    width: 40px; 
-    height: 3px; 
-    background: #ccd1d9; 
-    position: absolute; 
-    bottom: 0; 
-    left: 0; /* Lo blocca all'inizio del testo a sinistra */
-    /* Rimosso il transform per evitare che si sposti al centro */
-}
-
-        /* STILI SPECIFICI GUESTBOOK */
-        .message-card { 
-            background: var(--light-bg); border-radius: 12px; padding: 25px; 
-            margin-bottom: 25px; border-left: 5px solid var(--primary-color);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        /* TITOLO CON TRATTINO A SINISTRA */
+        .section-title { 
+            color: var(--primary-color); font-weight: bold; margin-bottom: 2rem; 
+            text-align: left; position: relative; padding-bottom: 15px; 
         }
-        .form-container {
+        .section-title::after { 
+            content: ''; width: 40px; height: 3px; background: #ccd1d9; 
+            position: absolute; bottom: 0; left: 0; 
+        }
+
+        .disqus-container {
             background: #fff; border: 1px solid #eee; border-radius: 15px; padding: 30px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05); margin-bottom: 50px;
         }
-        .btn-invia {
-            background-color: var(--primary-color); color: white; border-radius: 50px;
-            font-weight: bold; padding: 12px 30px; border: none; transition: 0.3s; width: 100%;
-        }
-        .btn-invia:hover { background-color: #4a89dc; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
-        footer { padding: 40px 0; font-size: 0.9rem; }
+        footer { padding: 40px 0; font-size: 0.9rem; margin-top: 50px; }
     </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-1">
     <div class="container-fluid px-4"> 
-        <a class="navbar-brand fw-bold" href="../index.html" id="nav-brand">PRO LOCO ALBANO</a>
+        <a class="navbar-brand fw-bold" href="../index.html">
+            Associazione Turistica Pro Loco<br>di Albano di Lucania
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -108,31 +85,18 @@
 <header class="hero-section" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../immagini/sfondo-guest.jpg');">
     <div class="container text-center text-white">
         <h1 class="display-4 fw-bold">Diario di Bordo</h1>
-        <p class="lead">I pensieri di chi ha visitato il nostro borgo</p>
+        <p class="lead">Lascia un commento sulla tua esperienza ad Albano</p>
     </div>
 </header>
 
 <main class="container my-5">
     <div class="row justify-content-center">
         <div class="col-lg-10">
-            <h2 class="section-title">Diario di Bordo</h2>
-            <p class="text-center mb-5">Raccontaci la tua esperienza ad Albano di Lucania. I tuoi pensieri saranno preziosi per noi e per i futuri visitatori.</p>
+            <h2 class="section-title">I vostri pensieri</h2>
             
-            <div id="disqus_thread" class="form-container"></div>
-            
-            <script>
-                var disqus_config = function () {
-                    this.page.url = window.location.href;  
-                    this.page.identifier = 'guestbook_albano'; 
-                };
-                (function() { 
-                    var d = document, s = d.createElement('script');
-                    s.src = 'https://prolocoalbano.disqus.com/embed.js'; // Sostituiremo questo
-                    s.setAttribute('data-timestamp', +new Date());
-                    (d.head || d.body).appendChild(s);
-                })();
-            </script>
-            <noscript>Per favore abilita JavaScript per visualizzare i commenti.</noscript>
+            <div class="disqus-container">
+                <div id="disqus_thread"></div>
+            </div>
         </div>
     </div>
 </main>
@@ -144,70 +108,33 @@
     </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
-    async function caricaDatiPagina() {
+    // Recupero dati footer dal JSON
+    async function caricaFooter() {
         try {
-            // Carica dati Vetrina per Footer e Navbar
-            const resVetrina = await fetch('../contenuti-vetrina.json');
-            const dataV = await resVetrina.json();
-            document.getElementById('nav-brand').innerHTML = dataV.nomeProLoco || "Pro Loco Albano";
-            document.getElementById('contatto-mail').innerText = dataV.emailContatto || "";
-            document.getElementById('footer-text').innerHTML = "© 2026 " + (dataV.nomeProLoco || "Pro Loco Albano");
-
-            // Carica messaggi con un parametro casuale per evitare la cache del browser
-            const resGuest = await fetch('../dati/guestbook.json?v=' + new Date().getTime());
-            const messaggi = await resGuest.json();
-
-            const container = document.getElementById('lista-messaggi');
-            if (!messaggi || messaggi.length === 0) {
-                container.innerHTML = "<p class='text-muted'>Ancora nessun messaggio. Sii il primo!</p>";
-            } else {
-                container.innerHTML = messaggi.map(m => `
-                    <div class="message-card">
-                        <div class="d-flex justify-content-between mb-2">
-                            <strong style="color: var(--primary-color);">${m.nome}</strong>
-                            <small class="text-muted">${m.data}</small>
-                        </div>
-                        <p class="mb-0" style="font-style: italic; color: #555;">"${m.testo}"</p>
-                    </div>
-                `).join('');
-            }
-        } catch (error) { console.error("Errore:", error); }
+            const res = await fetch('../contenuti-vetrina.json');
+            const data = await res.json();
+            document.getElementById('contatto-mail').innerText = data.emailContatto || "";
+            document.getElementById('footer-text').innerHTML = "© 2026 " + (data.nomeProLoco || "Pro Loco Albano");
+        } catch (e) { console.error(e); }
     }
+    caricaFooter();
 
-    // GESTIONE INVIO REALE AL SERVER
-    document.getElementById('guestbookForm').onsubmit = async function(e) {
-        e.preventDefault();
-        
-        const datiInviati = {
-            nome: document.getElementById('autore').value,
-            testo: document.getElementById('testo').value
-        };
-
-        try {
-            const response = await fetch('salva_messaggio.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(datiInviati)
-            });
-
-            if (response.ok) {
-                document.getElementById('msg-conferma').classList.remove('d-none');
-                this.reset();
-                // Ricarica la lista per mostrare subito il nuovo messaggio
-                setTimeout(caricaDatiPagina, 500);
-            } else {
-                alert("Errore nel salvataggio del messaggio.");
-            }
-        } catch (error) {
-            console.error("Errore:", error);
-            alert("Il server non risponde. Verifica che il PHP sia attivo.");
-        }
+    /** * CONFIGURAZIONE DISQUS 
+     * Importante: se non vedi il box messaggi, controlla di aver creato 
+     * l'account su Disqus e inserito lo "Shortname" corretto qui sotto.
+     */
+    var disqus_config = function () {
+        this.page.url = window.location.href;  
+        this.page.identifier = 'guestbook_albano_page'; 
     };
-
-    caricaDatiPagina();
+    (function() { 
+        var d = document, s = d.createElement('script');
+        // SOSTITUISCI 'pro-loco-albano' con il tuo shortname esatto di Disqus
+        s.src = 'https://pro-loco-albano.disqus.com/embed.js'; 
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
 </script>
 </body>
 </html>
