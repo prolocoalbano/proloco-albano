@@ -23,10 +23,10 @@
             scroll-behavior: smooth; 
         }
 
-        /* FIX PER ANCORE */
+        /* OFFSET PER ANCORE */
         section[id] { scroll-margin-top: 140px; }
 
-        /* NAVBAR MASTER - RIPRISTINATA */
+        /* NAVBAR PRINCIPALE (Stile Master) */
         .navbar { border-bottom: 1px solid #eee; background: white !important; }
         .navbar-brand { 
             color: var(--primary-color) !important; 
@@ -36,7 +36,7 @@
         }
         .nav-link { 
             font-weight: 600; 
-            font-size: 0.85rem !important; /* Ritorno allo standard Master */
+            font-size: 0.85rem !important; 
             text-transform: uppercase; 
             color: #666 !important; 
             padding: 5px 12px !important; 
@@ -45,7 +45,7 @@
         }
         .nav-link:hover { color: var(--primary-color) !important; }
 
-        /* SOTTO-BARRA DI NAVIGAZIONE */
+        /* SOTTO-BARRA DI NAVIGAZIONE RAPIDA */
         .sub-nav {
             background: var(--light-bg);
             border-bottom: 1px solid #e0e7ff;
@@ -66,12 +66,20 @@
         }
         .sub-nav a:hover { color: var(--accent-color); text-decoration: underline; }
         
-        /* DROPDOWN */
+        /* DROPDOWN & ICONA CHECK */
         .dropdown-menu { border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-radius: 12px; }
         .dropdown-item { font-size: 0.85rem; font-weight: 600; padding: 10px 20px; color: #666; }
-        .dropdown-item.disabled { color: var(--primary-color) !important; background: transparent; pointer-events: none; opacity: 0.8; }
+        .dropdown-item.active-section { 
+            color: var(--primary-color) !important; 
+            background: transparent; 
+            pointer-events: none; /* Disabilita il click */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .fa-check-circle { font-size: 0.9rem; margin-left: 10px; color: var(--primary-color); }
 
-        /* CONTENUTI */
+        /* LAYOUT SEZIONI */
         .hero-history { 
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../immagini/storia-hero.jpg');
             background-size: cover; background-position: center; height: 35vh; 
@@ -90,7 +98,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-1">
     <div class="container-fluid px-4"> 
-        <a class="navbar-brand fw-bold" href="../index.html">Associazione Turistica Pro Loco<br>di Albano di Lucania APS</a>
+        <a class="navbar-brand fw-bold" href="../index.html">Associazione Turistica Pro Loco<br>di Albano di Lucania</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -103,7 +111,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="color: var(--primary-color) !important;">Scopri Albano</a>
                     <ul class="dropdown-menu border-0 shadow-sm">
-                        <li><a class="dropdown-item disabled" href="#">Un po' di storia <i class="fas fa-check ms-2"></i></a></li>
+                        <li><a class="dropdown-item active-section" href="#">Un po' di storia <i class="fas fa-check-circle"></i></a></li>
                         <li><a class="dropdown-item" href="monumenti.html">Monumenti e Luoghi</a></li>
                     </ul>
                 </li>
@@ -133,65 +141,32 @@
     </div>
 </header>
 
-<section id="origini" class="section-padding">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <h2 class="section-title">Le Origini</h2>
-                <p>Inserisci qui i dettagli sulle prime fondamenta di Albano di Lucania...</p>
+<main>
+    <section id="origini" class="section-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h2 class="section-title">Le Origini</h2>
+                    <p>Scrivi qui la storia della fondazione...</p>
+                </div>
+                <div class="col-md-6"><img src="../immagini/storia_origini.jpg" class="img-featured" alt="Le Origini"></div>
             </div>
-            <div class="col-md-6"><img src="../immagini/storia_origini.jpg" class="img-featured" alt="Le Origini"></div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="rifoggio" class="section-padding bg-alt">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6 order-md-2">
-                <h2 class="section-title">Bosco di Rifoggio</h2>
-                <p>Descrizione del polmone verde e delle tradizioni legate a questa zona...</p>
+    <section id="rifoggio" class="section-padding bg-alt">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 order-md-2">
+                    <h2 class="section-title">Bosco di Rifoggio</h2>
+                    <p>Descrizione del bosco...</p>
+                </div>
+                <div class="col-md-6 order-md-1"><img src="../immagini/rifoggio.jpg" class="img-featured" alt="Rifoggio"></div>
             </div>
-            <div class="col-md-6 order-md-1"><img src="../immagini/rifoggio.jpg" class="img-featured" alt="Rifoggio"></div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="seroto" class="section-padding">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <h2 class="section-title">Seroto</h2>
-                <p>Focus sulla località Seroto e la sua importanza paesaggistica...</p>
-            </div>
-            <div class="col-md-6"><img src="../immagini/seroto.jpg" class="img-featured" alt="Seroto"></div>
-        </div>
-    </div>
-</section>
-
-<section id="palmenti" class="section-padding bg-alt">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6 order-md-2">
-                <h2 class="section-title">I Palmenti</h2>
-                <p>Storia delle vasche scavate nella roccia per la pigiatura dell'uva...</p>
-            </div>
-            <div class="col-md-6 order-md-1"><img src="../immagini/palmenti.jpg" class="img-featured" alt="I Palmenti"></div>
-        </div>
-    </div>
-</section>
-
-<section id="rocca" class="section-padding">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <h2 class="section-title">Rocca del Cappello</h2>
-                <p>La leggenda del monolite simbolo di Albano di Lucania...</p>
-            </div>
-            <div class="col-md-6"><img src="../immagini/rocca.jpg" class="img-featured" alt="Rocca del Cappello"></div>
-        </div>
-    </div>
-</section>
+    </main>
 
 <footer class="py-5 text-center">
     <div class="container">
