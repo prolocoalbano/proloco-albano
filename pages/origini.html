@@ -23,10 +23,8 @@
             scroll-behavior: smooth; 
         }
 
-        /* --- FIX PER TITOLI COPERTI DALLA BARRA --- */
-        section[id] {
-            scroll-margin-top: 100px; /* Altezza Navbar + Sotto-barra + Margine */
-        }
+        /* FIX PER ANCORE (Per non coprire i titoli) */
+        section[id] { scroll-margin-top: 140px; }
 
         /* NAVBAR MASTER */
         .navbar { border-bottom: 1px solid #eee; background: white !important; }
@@ -35,60 +33,55 @@
             font-size: 1.1rem !important; 
             font-weight: bold; 
             line-height: 1.2; 
-            display: inline-block;
         }
         .nav-link { 
-            font-weight: 600; font-size: 0.85rem !important; text-transform: uppercase; 
-            color: #666 !important; padding: 5px 8px !important; transition: 0.3s;
+            font-weight: 600; font-size: 0.82rem !important; text-transform: uppercase; 
+            color: #666 !important; padding: 5px 10px !important; transition: 0.3s;
         }
-        .dropdown-item { font-size: 0.85rem; font-weight: 600; color: #666; }
 
-        /* SOTTO-BARRA DI NAVIGAZIONE RAPIDA (STICKY) */
+        /* SOTTO-BARRA DI NAVIGAZIONE (Carattere ingrandito) */
         .sub-nav {
             background: var(--light-bg);
             border-bottom: 1px solid #e0e7ff;
             position: sticky;
-            top: 66px; /* Si aggancia sotto la navbar principale */
+            top: 66px;
             z-index: 999;
-            padding: 12px 0;
+            padding: 14px 0;
         }
         .sub-nav a {
-            font-size: 0.75rem;
+            font-size: 0.85rem; /* Ingrandito leggermente */
             text-transform: uppercase;
             font-weight: 700;
             color: var(--primary-color);
             text-decoration: none;
-            margin: 0 12px;
+            margin: 0 15px; /* Più spazio tra le voci */
             transition: 0.3s;
+            display: inline-block;
+            position: relative;
         }
-        .sub-nav a:hover { color: var(--accent-color); border-bottom: 2px solid var(--accent-color); }
+        .sub-nav a:hover { color: var(--accent-color); }
+        .sub-nav a::after {
+            content: ''; width: 0; height: 2px; background: var(--accent-color);
+            position: absolute; bottom: -5px; left: 0; transition: 0.3s;
+        }
+        .sub-nav a:hover::after { width: 100%; }
+        
+        /* DROPDOWN */
+        .dropdown-menu { border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-radius: 12px; }
+        .dropdown-item { font-size: 0.85rem; font-weight: 600; padding: 10px 20px; color: #666; }
+        .dropdown-item.disabled { color: var(--primary-color) !important; background: transparent; pointer-events: none; opacity: 0.8; }
 
-        /* HERO SECTION */
+        /* HERO & CONTENUTI */
         .hero-history { 
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../immagini/storia-hero.jpg');
-            background-size: cover; background-position: center; 
-            height: 40vh; display: flex; align-items: center; justify-content: center; 
-            color: white; text-align: center;
+            background-size: cover; background-position: center; height: 35vh; 
+            display: flex; align-items: center; justify-content: center; color: white;
         }
-
-        /* BLOCCHI CONTENUTO STILE VETRINA */
         .section-padding { padding: 80px 0; }
         .bg-alt { background-color: var(--light-bg); }
-
-        .section-title { 
-            color: var(--primary-color); font-weight: bold; margin-bottom: 1.5rem; 
-            text-align: left; position: relative; padding-bottom: 15px; 
-        }
-        .section-title::after { 
-            content: ''; width: 40px; height: 3px; background: #ccd1d9; 
-            position: absolute; bottom: 0; left: 0; 
-        }
-
-        .img-featured { 
-            border-radius: 20px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
-            width: 100%; height: 380px; object-fit: cover;
-        }
+        .section-title { color: var(--primary-color); font-weight: bold; position: relative; padding-bottom: 15px; margin-bottom: 1.5rem; }
+        .section-title::after { content: ''; width: 40px; height: 3px; background: #ccd1d9; position: absolute; bottom: 0; left: 0; }
+        .img-featured { border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); width: 100%; height: 380px; object-fit: cover; }
 
         footer { padding: 40px 0; font-size: 0.9rem; background-color: var(--primary-color); color: white; }
     </style>
@@ -97,24 +90,27 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-1">
     <div class="container-fluid px-4"> 
-        <a class="navbar-brand fw-bold" href="../index.html">
-            Associazione Turistica Pro Loco<br>di Albano di Lucania APS
-        </a>
+        <a class="navbar-brand fw-bold" href="../index.html">Associazione Turistica Pro Loco<br>di Albano di Lucania</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto align-items-center">
                 <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="chi-siamo.html">Chi siamo</a></li>
+                <li class="nav-item"><a class="nav-link" href="eventi.html">Eventi</a></li>
+                <li class="nav-item"><a class="nav-link" href="biblioteca.html">Biblioteca</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown" style="color: var(--primary-color) !important;">Scopri Albano</a>
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="color: var(--primary-color) !important;">Scopri Albano</a>
                     <ul class="dropdown-menu border-0 shadow-sm">
-                        <li><a class="dropdown-item" href="storia.html">Un po' di storia</a></li>
+                        <li><a class="dropdown-item disabled" href="#">Un po' di storia <i class="fas fa-check ms-2"></i></a></li>
                         <li><a class="dropdown-item" href="monumenti.html">Monumenti e Luoghi</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="eventi.html">Eventi</a></li>
-                <li class="nav-item"><a class="nav-link" href="guestbook.html">Diario</a></li>
+                <li class="nav-item"><a class="nav-link" href="cosa-fare.html">Cosa fare</a></li>
+                <li class="nav-item"><a class="nav-link" href="dove-dormire.html">Dormire</a></li>
+                <li class="nav-item"><a class="nav-link" href="dove-mangiare.html">Mangiare</a></li>
+                <li class="nav-item"><a class="nav-link" href="guestbook.html"><i class="fas fa-pen-fancy"></i> Diario</a></li>
             </ul>
         </div>
     </div>
@@ -131,9 +127,9 @@
 </div>
 
 <header class="hero-history">
-    <div class="container text-white">
+    <div class="container text-center text-white">
         <h1 class="display-4 fw-bold">Un po' di storia</h1>
-        <p class="lead text-uppercase" style="letter-spacing: 2px;">Passato, Natura e Tradizione</p>
+        <p class="lead text-uppercase" style="letter-spacing: 2px;">Tra Natura e Memoria</p>
     </div>
 </header>
 
@@ -142,12 +138,9 @@
         <div class="row align-items-center">
             <div class="col-md-6">
                 <h2 class="section-title">Le Origini</h2>
-                <p>Albano di Lucania custodisce una storia millenaria. Dalle prime tracce del periodo paleolitico fino agli insediamenti dei Lucani, il territorio è un mosaico di culture che si sono stratificate nel tempo.</p>
-                <p>La posizione elevata ha sempre garantito protezione e una vista mozzafiato sulle valli circostanti, rendendolo un borgo cruciale per il controllo del territorio.</p>
+                <p>Inserisci qui i dettagli sulle prime fondamenta di Albano di Lucania...</p>
             </div>
-            <div class="col-md-6">
-                <img src="../immagini/storia_origini.jpg" class="img-featured" alt="Le Origini">
-            </div>
+            <div class="col-md-6"><img src="../immagini/storia_origini.jpg" class="img-featured" alt="Le Origini"></div>
         </div>
     </div>
 </section>
@@ -157,11 +150,9 @@
         <div class="row align-items-center">
             <div class="col-md-6 order-md-2">
                 <h2 class="section-title">Bosco di Rifoggio</h2>
-                <p>Una vasta area boschiva di inestimabile valore naturalistico. Rifoggio non è solo un bosco, ma un pezzo di storia vissuta, luogo di ristoro e di antiche leggende legate ai briganti che qui trovavano rifugio.</p>
+                <p>Descrizione del polmone verde e delle tradizioni legate a questa zona...</p>
             </div>
-            <div class="col-md-6 order-md-1">
-                <img src="../immagini/rifoggio.jpg" class="img-featured" alt="Rifoggio">
-            </div>
+            <div class="col-md-6 order-md-1"><img src="../immagini/rifoggio.jpg" class="img-featured" alt="Rifoggio"></div>
         </div>
     </div>
 </section>
@@ -171,11 +162,9 @@
         <div class="row align-items-center">
             <div class="col-md-6">
                 <h2 class="section-title">Seroto</h2>
-                <p>Località suggestiva nota per la sua pace e i suoi panorami. Quest'area rappresenta il legame indissolubile tra il popolo di Albano e la sua terra, un luogo dove la natura parla ancora un linguaggio antico.</p>
+                <p>Focus sulla località Seroto e la sua importanza paesaggistica...</p>
             </div>
-            <div class="col-md-6">
-                <img src="../immagini/seroto.jpg" class="img-featured" alt="Seroto">
-            </div>
+            <div class="col-md-6"><img src="../immagini/seroto.jpg" class="img-featured" alt="Seroto"></div>
         </div>
     </div>
 </section>
@@ -185,11 +174,9 @@
         <div class="row align-items-center">
             <div class="col-md-6 order-md-2">
                 <h2 class="section-title">I Palmenti</h2>
-                <p>Scolpiti nella roccia, i Palmenti testimoniano la maestria degli antichi abitanti nella lavorazione del vino. Queste vasche arcaiche sono un monumento all'ingegno contadino e alla cultura enologica locale.</p>
+                <p>Storia delle vasche scavate nella roccia per la pigiatura dell'uva...</p>
             </div>
-            <div class="col-md-6 order-md-1">
-                <img src="../immagini/palmenti.jpg" class="img-featured" alt="I Palmenti">
-            </div>
+            <div class="col-md-6 order-md-1"><img src="../immagini/palmenti.jpg" class="img-featured" alt="I Palmenti"></div>
         </div>
     </div>
 </section>
@@ -199,11 +186,9 @@
         <div class="row align-items-center">
             <div class="col-md-6">
                 <h2 class="section-title">Rocca del Cappello</h2>
-                <p>Un monolite leggendario che svetta fiero sul profilo delle Dolomiti Lucane. Per gli abitanti è un simbolo di protezione, un guardiano di pietra che da secoli osserva lo scorrere del tempo.</p>
+                <p>La leggenda del monolite simbolo di Albano di Lucania...</p>
             </div>
-            <div class="col-md-6">
-                <img src="../immagini/rocca.jpg" class="img-featured" alt="Rocca del Cappello">
-            </div>
+            <div class="col-md-6"><img src="../immagini/rocca.jpg" class="img-featured" alt="Rocca del Cappello"></div>
         </div>
     </div>
 </section>
@@ -217,7 +202,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    // Caricamento dati Vetrina (Footer)
     async function caricaMaster() {
         try {
             const res = await fetch('../contenuti-vetrina.json');
