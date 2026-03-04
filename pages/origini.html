@@ -23,23 +23,29 @@
             scroll-behavior: smooth; 
         }
 
-        /* FIX PER ANCORE (Per non coprire i titoli) */
+        /* FIX PER ANCORE */
         section[id] { scroll-margin-top: 140px; }
 
-        /* NAVBAR MASTER */
+        /* NAVBAR MASTER - RIPRISTINATA */
         .navbar { border-bottom: 1px solid #eee; background: white !important; }
         .navbar-brand { 
             color: var(--primary-color) !important; 
-            font-size: 1.1rem !important; 
+            font-size: 1.2rem !important; 
             font-weight: bold; 
             line-height: 1.2; 
         }
         .nav-link { 
-            font-weight: 600; font-size: 0.82rem !important; text-transform: uppercase; 
-            color: #666 !important; padding: 5px 10px !important; transition: 0.3s;
+            font-weight: 600; 
+            font-size: 0.85rem !important; /* Ritorno allo standard Master */
+            text-transform: uppercase; 
+            color: #666 !important; 
+            padding: 5px 12px !important; 
+            transition: 0.3s;
+            letter-spacing: 0.3px;
         }
+        .nav-link:hover { color: var(--primary-color) !important; }
 
-        /* SOTTO-BARRA DI NAVIGAZIONE (Carattere ingrandito) */
+        /* SOTTO-BARRA DI NAVIGAZIONE */
         .sub-nav {
             background: var(--light-bg);
             border-bottom: 1px solid #e0e7ff;
@@ -49,29 +55,23 @@
             padding: 14px 0;
         }
         .sub-nav a {
-            font-size: 0.85rem; /* Ingrandito leggermente */
+            font-size: 0.85rem; 
             text-transform: uppercase;
             font-weight: 700;
             color: var(--primary-color);
             text-decoration: none;
-            margin: 0 15px; /* Più spazio tra le voci */
+            margin: 0 15px;
             transition: 0.3s;
             display: inline-block;
-            position: relative;
         }
-        .sub-nav a:hover { color: var(--accent-color); }
-        .sub-nav a::after {
-            content: ''; width: 0; height: 2px; background: var(--accent-color);
-            position: absolute; bottom: -5px; left: 0; transition: 0.3s;
-        }
-        .sub-nav a:hover::after { width: 100%; }
+        .sub-nav a:hover { color: var(--accent-color); text-decoration: underline; }
         
         /* DROPDOWN */
         .dropdown-menu { border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-radius: 12px; }
         .dropdown-item { font-size: 0.85rem; font-weight: 600; padding: 10px 20px; color: #666; }
         .dropdown-item.disabled { color: var(--primary-color) !important; background: transparent; pointer-events: none; opacity: 0.8; }
 
-        /* HERO & CONTENUTI */
+        /* CONTENUTI */
         .hero-history { 
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../immagini/storia-hero.jpg');
             background-size: cover; background-position: center; height: 35vh; 
@@ -90,7 +90,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-1">
     <div class="container-fluid px-4"> 
-        <a class="navbar-brand fw-bold" href="../index.html">Associazione Turistica Pro Loco<br>di Albano di Lucania</a>
+        <a class="navbar-brand fw-bold" href="../index.html">Associazione Turistica Pro Loco<br>di Albano di Lucania APS</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
