@@ -12,7 +12,7 @@
         :root { 
             --primary-color: #5d9cec; 
             --accent-color: #4fc1e9;
-            --vetrina-bg: #f0f7ff; /* L'azzurro tenue della tua vetrina */
+            --vetrina-bg: #f0f7ff; 
             --text-dark: #4a4a4a;
             --text-muted: #666;
         } 
@@ -24,10 +24,8 @@
             scroll-behavior: smooth; 
         }
 
-        /* OFFSET PER ANCORE */
         section[id] { scroll-margin-top: 80px; }
 
-        /* NAVBAR PRINCIPALE (Stile Master) */
         .navbar { border-bottom: 1px solid #eee; background: white !important; }
         .navbar-brand { 
             color: var(--primary-color) !important; 
@@ -46,7 +44,6 @@
         }
         .nav-link:hover { color: var(--primary-color) !important; }
 
-        /* SOTTO-BARRA DI NAVIGAZIONE RAPIDA */
         .sub-nav {
             background: #fff;
             border-bottom: 1px solid #eee;
@@ -66,7 +63,6 @@
         }
         .sub-nav a:hover { color: var(--accent-color); }
         
-        /* DROPDOWN */
         .dropdown-menu { border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-radius: 12px; }
         .dropdown-item { font-size: 0.85rem; font-weight: 600; padding: 10px 20px; color: var(--text-muted); }
         .dropdown-item.active-section { 
@@ -76,14 +72,12 @@
             display: flex; align-items: center; justify-content: space-between;
         }
 
-        /* HERO SECTION */
         .hero-history { 
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../immagini/storia-hero.jpg');
             background-size: cover; background-position: center; height: 35vh; 
             display: flex; align-items: center; justify-content: center; color: white;
         }
 
-        /* BLOCCHI DI TESTO GIUSTIFICATO E IMMAGINI INCORNICIATE */
         .section-padding { padding: 60px 0; }
         .bg-vetrina { background-color: var(--vetrina-bg); }
 
@@ -93,27 +87,27 @@
         }
         .section-title::after { content: ''; width: 50px; height: 3px; background: #ccd1d9; position: absolute; bottom: 0; left: 0; }
 
+        /* --- STILE PER IL TESTO GIUSTIFICATO E FOTO INCORNICIATA --- */
         .history-content {
-            text-align: justify; /* Testo Giustificato */
+            text-align: justify; 
             line-height: 1.8;
             color: var(--text-dark);
         }
 
-        /* Stile Immagine Wrappata (Incorniciata) */
         .img-wrap {
             width: 40%;
             height: auto;
             border-radius: 12px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .img-right { float: right; margin-left: 30px; }
         .img-left { float: left; margin-right: 30px; }
 
+        /* Reset per evitare che i blocchi si sovrappongano */
         .clearfix::after { content: ""; clear: both; display: table; }
 
-        /* Mobile Optimization */
         @media (max-width: 768px) {
             .img-wrap { width: 100%; float: none; margin: 0 0 20px 0; }
         }
@@ -169,82 +163,20 @@
 </header>
 
 <section id="origini" class="section-padding">
-    <div class="container">
-        <div class="row align-items-center g-5">
-            <div class="col-md-6">
-                <h2 class="section-title">Le Origini</h2>
-                <p class="lead-text">A causa della mancanza di documenti, le origini di Albano di Lucania sono incerte.
-Diverse sono le ipotesi sul suo nome, le più suggestive indicano la sua origine da un condottiero romano, albanese o greco, o da una principessa di nome Alba.
-Tuttavia, le ipotesi più attendibili lasciano supporre che il nome Albano derivi da una famiglia gentilizia romana. Gli studi della toponomastica svolti da Flechia e confermati da Racioppi ci dicono che i nomi che terminano in “ano” ed “ana”, molto frequenti in Italia Meridionale, indicano proprietà o possesso da parte di una famiglia gentilizia. Albano, dunque, potrebbe essere stato posseduto dalla nobile famiglia romana Albius da cui sarebbe derivato il nome (Albius-Albianum-Albanum-Albano).
-Non si può neanche escludere che il nome Albano derivi dalla radice indoeuropea “alb-" che vuol dire monte” come accade per le “Alpi” e per i “Colli Albani”.
-Diversi sono gli elementi che lasciano dedurre che il territorio di Albano di Lucania sia stato abitato sin da tempi remoti. Francesco di Sanza, nel suo libro “Basilicata”, riferisce che poco lontano dal centro abitato di Albano di Lucania esistevano avanzi di mura antichissime costruite con massi enormi. Secondo alcune estimonianze orali, queste mura sarebbero state distrutte dai moderni mezzi di scavo durante i lavori di ammodernamento del centro abitato.
-Anche i segni lasciati dall'uomo sulla roccia lasciano supporre la sua presenza antichissima sul territorio di Albano.
-</p>
-            </div>
-            <div class="col-md-6">
-                <img src="../immagini/storia_origini.jpg" class="img-featured" alt="Le Origini">
-            </div>
-        </div>
+    <div class="container clearfix history-content">
+        <h2 class="section-title">Le Origini</h2>
+        <img src="../immagini/storia_origini.jpg" class="img-wrap img-right" alt="Le Origini">
+        <p>A causa della mancanza di documenti, le origini di Albano di Lucania sono incerte. Diverse sono le ipotesi sul suo nome, le più suggestive indicano la sua origine da un condottiero romano, albanese o greco, o da una principessa di nome Alba. Tuttavia, le ipotesi più attendibili lasciano supporre che il nome Albano derivi da una famiglia gentilizia romana. Gli studi della toponomastica svolti da Flechia e confermati da Racioppi ci dicono che i nomi che terminano in “ano” ed “ana”, molto frequenti in Italia Meridionale, indicano proprietà o possesso da parte di una famiglia gentilizia. Albano, dunque, potrebbe essere stato posseduto dalla nobile famiglia romana Albius da cui sarebbe derivato il nome (Albius-Albianum-Albanum-Albano).</p>
+        <p>Non si può neanche escludere che il nome Albano derivi dalla radice indoeuropea “alb-" che vuol dire monte” come accade per le “Alpi” e per i “Colli Albani”. Diversi sono gli elementi che lasciano dedurre che il territorio di Albano di Lucania sia stato abitato sin da tempi remoti. Francesco di Sanza, nel suo libro “Basilicata”, riferisce che poco lontano dal centro abitato di Albano di Lucania esistevano avanzi di mura antichissime costruite con massi enormi. Secondo alcune testimonianze orali, queste mura sarebbero state distrutte dai moderni mezzi di scavo durante i lavori di ammodernamento del centro abitato. Anche i segni lasciati dall'uomo sulla roccia lasciano supporre la sua presenza antichissima sul territorio di Albano.</p>
     </div>
 </section>
 
 <section id="rifoggio" class="section-padding bg-vetrina">
-    <div class="container">
-        <div class="row align-items-center g-5">
-            <div class="col-md-6 order-md-2">
-                <h2 class="section-title">Bosco di Rifoggio</h2>
-                <p class="lead-text">Una delle aree naturalistiche più belle della Basilicata, dove il tempo sembra essersi fermato.</p>
-                <p>Descrivi la flora, la fauna e l'importanza del bosco per la comunità...</p>
-            </div>
-            <div class="col-md-6 order-md-1">
-                <img src="../immagini/rifoggio.jpg" class="img-featured" alt="Rifoggio">
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="seroto" class="section-padding">
-    <div class="container">
-        <div class="row align-items-center g-5">
-            <div class="col-md-6">
-                <h2 class="section-title">Seroto</h2>
-                <p class="lead-text">Paesaggi mozzafiato che raccontano il legame profondo tra l'uomo e la natura lucana.</p>
-                <p>Approfondimento sulla località Seroto...</p>
-            </div>
-            <div class="col-md-6">
-                <img src="../immagini/seroto.jpg" class="img-featured" alt="Seroto">
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="palmenti" class="section-padding bg-vetrina">
-    <div class="container">
-        <div class="row align-items-center g-5">
-            <div class="col-md-6 order-md-2">
-                <h2 class="section-title">I Palmenti</h2>
-                <p class="lead-text">L'antica arte della vinificazione scolpita direttamente nella roccia arenaria.</p>
-                <p>Spiega come venivano usate queste vasche arcaiche...</p>
-            </div>
-            <div class="col-md-6 order-md-1">
-                <img src="../immagini/palmenti.jpg" class="img-featured" alt="I Palmenti">
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="rocca" class="section-padding">
-    <div class="container">
-        <div class="row align-items-center g-5">
-            <div class="col-md-6">
-                <h2 class="section-title">Rocca del Cappello</h2>
-                <p class="lead-text">Il monolite della magia, simbolo identitario e sentinella silenziosa di Albano.</p>
-                <p>Parla della leggenda e della particolarità geologica della Rocca...</p>
-            </div>
-            <div class="col-md-6">
-                <img src="../immagini/rocca.jpg" class="img-featured" alt="Rocca del Cappello">
-            </div>
-        </div>
+    <div class="container clearfix history-content">
+        <h2 class="section-title">Bosco di Rifoggio</h2>
+        <img src="../immagini/rifoggio.jpg" class="img-wrap img-left" alt="Rifoggio">
+        <p>Una delle aree naturalistiche più belle della Basilicata, dove il tempo sembra essersi fermato. Il bosco di Rifoggio è un'oasi di pace e biodiversità che offre percorsi suggestivi tra alberi secolari e panorami mozzafiato.</p>
+        <p>Descrivi la flora, la fauna e l'importanza del bosco per la comunità. Qui il testo scorrerà correttamente di fianco e sotto l'immagine, creando quell'effetto "incorniciato" che desideravi, mantenendo lo stile della vetrina.</p>
     </div>
 </section>
 
