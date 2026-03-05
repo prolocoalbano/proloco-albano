@@ -24,60 +24,21 @@
             scroll-behavior: smooth; 
         }
 
-        section[id] { scroll-margin-top: 80px; }
-
+        /* NAVBAR & NAV */
         .navbar { border-bottom: 1px solid #eee; background: white !important; }
-        .navbar-brand { 
-            color: var(--primary-color) !important; 
-            font-size: 1.2rem !important; 
-            font-weight: bold; 
-            line-height: 1.2; 
-        }
-        .nav-link { 
-            font-weight: 600; 
-            font-size: 0.85rem !important; 
-            text-transform: uppercase; 
-            color: var(--text-muted) !important; 
-            padding: 5px 12px !important; 
-            transition: 0.3s;
-            letter-spacing: 0.3px;
-        }
-        .nav-link:hover { color: var(--primary-color) !important; }
-
-        .sub-nav {
-            background: #fff;
-            border-bottom: 1px solid #eee;
-            position: sticky;
-            top: 66px;
-            z-index: 999;
-            padding: 14px 0;
-        }
-        .sub-nav a {
-            font-size: 0.85rem; 
-            text-transform: uppercase;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-            margin: 0 15px;
-            transition: 0.3s;
-        }
-        .sub-nav a:hover { color: var(--accent-color); }
+        .nav-link { font-weight: 600; font-size: 0.85rem !important; text-transform: uppercase; color: var(--text-muted) !important; }
         
-        .dropdown-menu { border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-radius: 12px; }
-        .dropdown-item { font-size: 0.85rem; font-weight: 600; padding: 10px 20px; color: var(--text-muted); }
-        .dropdown-item.active-section { 
-            color: var(--primary-color) !important; 
-            background: transparent; 
-            pointer-events: none;
-            display: flex; align-items: center; justify-content: space-between;
-        }
+        .sub-nav { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 66px; z-index: 999; padding: 14px 0; }
+        .sub-nav a { font-size: 0.85rem; text-transform: uppercase; font-weight: 700; color: var(--primary-color); text-decoration: none; margin: 0 15px; }
 
+        /* HERO */
         .hero-history { 
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../immagini/storia-hero.jpg');
             background-size: cover; background-position: center; height: 35vh; 
             display: flex; align-items: center; justify-content: center; color: white;
         }
 
+        /* --- LOGICA PER TESTO INCORNICIATO --- */
         .section-padding { padding: 60px 0; }
         .bg-vetrina { background-color: var(--vetrina-bg); }
 
@@ -87,73 +48,49 @@
         }
         .section-title::after { content: ''; width: 50px; height: 3px; background: #ccd1d9; position: absolute; bottom: 0; left: 0; }
 
-        /* --- STILE PER IL TESTO GIUSTIFICATO E FOTO INCORNICIATA --- */
+        /* Il contenitore che comanda il testo giustificato */
         .history-content {
             text-align: justify; 
             line-height: 1.8;
             color: var(--text-dark);
+            display: block; /* Fondamentale per il float */
         }
 
+        /* L'immagine che galleggia */
         .img-wrap {
-            width: 40%;
+            width: 40%; /* Regola qui quanto deve essere grande la foto */
             height: auto;
             border-radius: 12px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .img-right { 
+            float: right; 
+            margin-left: 30px; 
             margin-bottom: 15px;
         }
 
-        .img-right { float: right; margin-left: 30px; }
-        .img-left { float: left; margin-right: 30px; }
+        .img-left { 
+            float: left; 
+            margin-right: 30px; 
+            margin-bottom: 15px;
+        }
 
-        /* Reset per evitare che i blocchi si sovrappongano */
-        .clearfix::after { content: ""; clear: both; display: table; }
+        /* Pulisce il galleggiamento per non far sovrapporre le sezioni */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
 
         @media (max-width: 768px) {
             .img-wrap { width: 100%; float: none; margin: 0 0 20px 0; }
         }
 
-        footer { padding: 60px 0; font-size: 0.9rem; background-color: var(--primary-color); color: white; }
+        footer { padding: 60px 0; background-color: var(--primary-color); color: white; }
     </style>
 </head>
 <body>
-
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-1">
-    <div class="container-fluid px-4"> 
-        <a class="navbar-brand fw-bold" href="../index.html">Associazione Turistica Pro Loco<br>di Albano di Lucania APS</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto align-items-center">
-                <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="chi-siamo.html">Chi siamo</a></li>
-                <li class="nav-item"><a class="nav-link" href="eventi.html">Eventi</a></li>
-                <li class="nav-item"><a class="nav-link" href="biblioteca.html">Biblioteca</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="color: var(--primary-color) !important;">Scopri Albano</a>
-                    <ul class="dropdown-menu border-0 shadow-sm">
-                        <li><a class="dropdown-item active-section" href="#">Un po' di storia <i class="fas fa-check-circle"></i></a></li>
-                        <li><a class="dropdown-item" href="monumenti.html">Monumenti e Luoghi</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="cosa-fare.html">Cosa fare</a></li>
-                <li class="nav-item"><a class="nav-link" href="dove-dormire.html">Dormire</a></li>
-                <li class="nav-item"><a class="nav-link" href="dove-mangiare.html">Mangiare</a></li>
-                <li class="nav-item"><a class="nav-link" href="guestbook.html"><i class="fas fa-pen-fancy"></i> Diario</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<div class="sub-nav d-none d-md-block text-center shadow-sm">
-    <div class="container">
-        <a href="#origini">Le Origini</a>
-        <a href="#rifoggio">Rifoggio</a>
-        <a href="#seroto">Seroto</a>
-        <a href="#palmenti">I Palmenti</a>
-        <a href="#rocca">Rocca del Cappello</a>
-    </div>
-</div>
 
 <header class="hero-history">
     <div class="container text-center text-white">
@@ -162,21 +99,24 @@
     </div>
 </header>
 
-<section id="origini" class="section-padding">
-    <div class="container clearfix history-content">
+<section id="origini" class="section-padding clearfix">
+    <div class="container history-content">
         <h2 class="section-title">Le Origini</h2>
+        
         <img src="../immagini/storia_origini.jpg" class="img-wrap img-right" alt="Le Origini">
-        <p>A causa della mancanza di documenti, le origini di Albano di Lucania sono incerte. Diverse sono le ipotesi sul suo nome, le più suggestive indicano la sua origine da un condottiero romano, albanese o greco, o da una principessa di nome Alba. Tuttavia, le ipotesi più attendibili lasciano supporre che il nome Albano derivi da una famiglia gentilizia romana. Gli studi della toponomastica svolti da Flechia e confermati da Racioppi ci dicono che i nomi che terminano in “ano” ed “ana”, molto frequenti in Italia Meridionale, indicano proprietà o possesso da parte di una famiglia gentilizia. Albano, dunque, potrebbe essere stato posseduto dalla nobile famiglia romana Albius da cui sarebbe derivato il nome (Albius-Albianum-Albanum-Albano).</p>
-        <p>Non si può neanche escludere che il nome Albano derivi dalla radice indoeuropea “alb-" che vuol dire monte” come accade per le “Alpi” e per i “Colli Albani”. Diversi sono gli elementi che lasciano dedurre che il territorio di Albano di Lucania sia stato abitato sin da tempi remoti. Francesco di Sanza, nel suo libro “Basilicata”, riferisce che poco lontano dal centro abitato di Albano di Lucania esistevano avanzi di mura antichissime costruite con massi enormi. Secondo alcune testimonianze orali, queste mura sarebbero state distrutte dai moderni mezzi di scavo durante i lavori di ammodernamento del centro abitato. Anche i segni lasciati dall'uomo sulla roccia lasciano supporre la sua presenza antichissima sul territorio di Albano.</p>
+        
+        <p>A causa della mancanza di documenti, le origini di Albano di Lucania sono incerte. Diverse sono le ipotesi sul suo nome, le più suggestive indicano la sua origine da un condottiero romano, albanese o greco, o da una principessa di nome Alba. Tuttavia, le ipotesi più attendibili lasciano supporre che il nome Albano derivi da una famiglia gentilizia romana. Gli studi della toponomastica svolti da Flechia e confermati da Racioppi ci dicono che i nomi che terminano in “ano” ed “ana”, molto frequenti in Italia Meridionale, indicano proprietà o possesso da parte di una famiglia gentilizia. Albano, dunque, potrebbe essere stato posseduto dalla nobile famiglia romana Albius da cui sarebbe derivato il nome (Albius-Albianum-Albanum-Albano). Non si può neanche escludere che il nome Albano derivi dalla radice indoeuropea “alb-" che vuol dire monte” come accade per le “Alpi” e per i “Colli Albani”. Diversi sono gli elementi che lasciano dedurre che il territorio di Albano di Lucania sia stato abitato sin da tempi remoti. Francesco di Sanza, nel suo libro “Basilicata”, riferisce che poco lontano dal centro abitato di Albano di Lucania esistevano avanzi di mura antichissime costruite con massi enormi. Secondo alcune testimonianze orali, queste mura sarebbero state distrutti dai moderni mezzi di scavo durante i lavori di ammodernamento del centro abitato. Anche i segni lasciati dall'uomo sulla roccia lasciano supporre la sua presenza antichissima sul territorio di Albano.</p>
     </div>
 </section>
 
-<section id="rifoggio" class="section-padding bg-vetrina">
-    <div class="container clearfix history-content">
+<section id="rifoggio" class="section-padding bg-vetrina clearfix">
+    <div class="container history-content">
         <h2 class="section-title">Bosco di Rifoggio</h2>
+        
         <img src="../immagini/rifoggio.jpg" class="img-wrap img-left" alt="Rifoggio">
+        
         <p>Una delle aree naturalistiche più belle della Basilicata, dove il tempo sembra essersi fermato. Il bosco di Rifoggio è un'oasi di pace e biodiversità che offre percorsi suggestivi tra alberi secolari e panorami mozzafiato.</p>
-        <p>Descrivi la flora, la fauna e l'importanza del bosco per la comunità. Qui il testo scorrerà correttamente di fianco e sotto l'immagine, creando quell'effetto "incorniciato" che desideravi, mantenendo lo stile della vetrina.</p>
+        <p>Qui il testo scorrerà correttamente a destra dell'immagine e poi continuerà sotto di essa non appena lo spazio sarà libero, creando l'effetto incorniciato tipico delle riviste. La giustificazione del testo assicura che i margini siano dritti e puliti, mantenendo l'eleganza che hai impostato nella pagina vetrina.</p>
     </div>
 </section>
 
@@ -199,5 +139,6 @@
     }
     caricaMaster();
 </script>
+
 </body>
 </html>
