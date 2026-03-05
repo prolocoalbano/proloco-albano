@@ -12,8 +12,9 @@
         :root { 
             --primary-color: #5d9cec; 
             --accent-color: #4fc1e9;
-            --light-bg: #f8faff;
+            --vetrina-bg: #f0f7ff; /* L'azzurro tenue della tua vetrina */
             --text-dark: #4a4a4a;
+            --text-muted: #666;
         } 
         
         body { 
@@ -38,7 +39,7 @@
             font-weight: 600; 
             font-size: 0.85rem !important; 
             text-transform: uppercase; 
-            color: #666 !important; 
+            color: var(--text-muted) !important; 
             padding: 5px 12px !important; 
             transition: 0.3s;
             letter-spacing: 0.3px;
@@ -47,8 +48,8 @@
 
         /* SOTTO-BARRA DI NAVIGAZIONE RAPIDA */
         .sub-nav {
-            background: var(--light-bg);
-            border-bottom: 1px solid #e0e7ff;
+            background: #fff;
+            border-bottom: 1px solid #eee;
             position: sticky;
             top: 66px;
             z-index: 999;
@@ -62,139 +63,59 @@
             text-decoration: none;
             margin: 0 15px;
             transition: 0.3s;
-            display: inline-block;
         }
-        .sub-nav a:hover { color: var(--accent-color); text-decoration: underline; }
+        .sub-nav a:hover { color: var(--accent-color); }
         
-        /* DROPDOWN & ICONA CHECK */
+        /* DROPDOWN */
         .dropdown-menu { border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-radius: 12px; }
-        .dropdown-item { font-size: 0.85rem; font-weight: 600; padding: 10px 20px; color: #666; }
+        .dropdown-item { font-size: 0.85rem; font-weight: 600; padding: 10px 20px; color: var(--text-muted); }
         .dropdown-item.active-section { 
             color: var(--primary-color) !important; 
             background: transparent; 
-            pointer-events: none; /* Disabilita il click */
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            pointer-events: none;
+            display: flex; align-items: center; justify-content: space-between;
         }
-        .fa-check-circle { font-size: 0.9rem; margin-left: 10px; color: var(--primary-color); }
 
-        /* LAYOUT SEZIONI */
+        /* HERO SECTION */
         .hero-history { 
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../immagini/storia-hero.jpg');
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../immagini/storia-hero.jpg');
             background-size: cover; background-position: center; height: 35vh; 
             display: flex; align-items: center; justify-content: center; color: white;
         }
-        .section-padding { padding: 80px 0; }
-        .bg-alt { background-color: var(--light-bg); }
-        .section-title { color: var(--primary-color); font-weight: bold; position: relative; padding-bottom: 15px; margin-bottom: 1.5rem; }
-        .section-title::after { content: ''; width: 40px; height: 3px; background: #ccd1d9; position: absolute; bottom: 0; left: 0; }
-        .img-featured { border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); width: 100%; height: 380px; object-fit: cover; }
 
-        footer { padding: 40px 0; font-size: 0.9rem; background-color: var(--primary-color); color: white; }
+        /* BLOCCHI STILE VETRINA */
+        .section-padding { padding: 90px 0; }
+        .bg-vetrina { background-color: var(--vetrina-bg); } /* Colore ripreso dalla vetrina */
+
+        .section-title { 
+            color: var(--primary-color); 
+            font-weight: bold; 
+            position: relative; 
+            padding-bottom: 15px; 
+            margin-bottom: 2rem; 
+            font-size: 2rem;
+        }
+        .section-title::after { 
+            content: ''; width: 50px; height: 3px; background: #ccd1d9; 
+            position: absolute; bottom: 0; left: 0; 
+        }
+
+        .lead-text { font-size: 1.1rem; color: var(--text-dark); margin-bottom: 1.5rem; }
+
+        .img-featured { 
+            border-radius: 12px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+            width: 100%; height: 400px; object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .img-featured:hover { transform: translateY(-5px); }
+
+        footer { padding: 60px 0; font-size: 0.9rem; background-color: var(--primary-color); color: white; }
     </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-1">
     <div class="container-fluid px-4"> 
-        <a class="navbar-brand fw-bold" href="../index.html">Associazione Turistica Pro Loco<br>di Albano di Lucania APS</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto align-items-center">
-                <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="chi-siamo.html">Chi siamo</a></li>
-                <li class="nav-item"><a class="nav-link" href="eventi.html">Eventi</a></li>
-                <li class="nav-item"><a class="nav-link" href="biblioteca.html">Biblioteca</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="color: var(--primary-color) !important;">Scopri Albano</a>
-                    <ul class="dropdown-menu border-0 shadow-sm">
-                        <li><a class="dropdown-item active-section" href="#">Un po' di storia <i class="fas fa-check-circle"></i></a></li>
-                        <li><a class="dropdown-item" href="monumenti.html">Monumenti e Luoghi</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="cosa-fare.html">Cosa fare</a></li>
-                <li class="nav-item"><a class="nav-link" href="dove-dormire.html">Dormire</a></li>
-                <li class="nav-item"><a class="nav-link" href="dove-mangiare.html">Mangiare</a></li>
-                <li class="nav-item"><a class="nav-link" href="guestbook.html"><i class="fas fa-pen-fancy"></i> Diario</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<div class="sub-nav d-none d-md-block text-center shadow-sm">
-    <div class="container">
-        <a href="#origini">Le Origini</a>
-        <a href="#rifoggio">Rifoggio</a>
-        <a href="#seroto">Seroto</a>
-        <a href="#palmenti">I Palmenti</a>
-        <a href="#rocca">Rocca del Cappello</a>
-    </div>
-</div>
-
-<header class="hero-history">
-    <div class="container text-center text-white">
-        <h1 class="display-4 fw-bold">Un po' di storia</h1>
-        <p class="lead text-uppercase" style="letter-spacing: 2px;">Tra Natura e Memoria</p>
-    </div>
-</header>
-
-
-    
-    
-    <main>
-    <section id="origini" class="section-padding">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <h2 class="section-title">Le Origini</h2>
-                    <p>A causa della mancanza di documenti, le origini di Albano di Lucania sono incerte. 
-Diverse sono le ipotesi sul suo nome, le più suggestive indicano la sua origine da un condottiero romano, albanese o greco, o da una principessa di nome Alba.
-Tuttavia, le ipotesi più attendibili lasciano supporre che il nome Albano derivi da una famiglia gentilizia romana. Gli studi della toponomastica svolti da Flechia e confermati da Racioppi ci dicono che i nomi che terminano in “ano” ed “ana”, molto frequenti in Italia Meridionale, indicano proprietà o possesso da parte di una famiglia gentilizia. Albano, dunque, potrebbe essere stato posseduto dalla nobile famiglia romana Albius da cui sarebbe derivato il nome (Albius-Albianum-Albanum-Albano).
-Non si può neanche escludere che il nome Albano derivi dalla radice indoeuropea “alb-” che vuol dire monte” come accade per le “Alpi” e per i “Colli Albani”.
-Diversi sono gli elementi che lasciano dedurre che il territorio di Albano di Lucania sia stato abitato sin da tempi remoti. Francesco di Sanza, nel suo libro “Basilicata”, riferisce che poco lontano dal centro abitato di Albano di Lucania esistevano avanzi di mura antichissime costruite con massi enormi. Secondo alcune testimonianze orali, queste mura sarebbero state distrutte dai moderni mezzi di scavo durante i lavori di ammodernamento del centro abitato.
-Anche i segni lasciati dall'uomo sulla roccia lasciano supporre la sua presenza antichissima sul territorio di Albano.
-</p>
-                </div>
-                <div class="col-md-6"><img src="../immagini/storia_origini.jpg" class="img-featured" alt="Le Origini"></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="rifoggio" class="section-padding bg-alt">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6 order-md-2">
-                    <h2 class="section-title">Bosco di Rifoggio</h2>
-                    <p>Descrizione del bosco...</p>
-                </div>
-                <div class="col-md-6 order-md-1"><img src="../immagini/rifoggio.jpg" class="img-featured" alt="Rifoggio"></div>
-            </div>
-        </div>
-    </section>
-
-    </main>
-
-<footer class="py-5 text-center">
-    <div class="container">
-        <p id="footer-text" class="mb-1"></p>
-        <p>Email: <strong id="contatto-mail" style="color: white !important;"></strong></p>
-    </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    async function caricaMaster() {
-        try {
-            const res = await fetch('../contenuti-vetrina.json');
-            const data = await res.json();
-            document.getElementById('contatto-mail').innerText = data.emailContatto || "";
-            document.getElementById('footer-text').innerHTML = "© 2026 " + (data.nomeProLoco || "Pro Loco Albano");
-        } catch (e) { console.error(e); }
-    }
-    caricaMaster();
-</script>
-</body>
-</html>
+        <a class="navbar-brand fw-bold" href="../index.html">Associazione Turistica Pro Loco<br>di Albano di Lucania</a>
+        <button class="navbar-toggler" type="button" data-bs
