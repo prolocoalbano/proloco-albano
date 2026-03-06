@@ -24,82 +24,85 @@
             scroll-behavior: smooth; 
         }
 
-        section[id] { scroll-margin-top: 140px; }
+        /* OFFSET PER ANCORE */
+        section[id] { scroll-margin-top: 150px; }
 
+        /* NAVBAR COMPLETA */
         .navbar { border-bottom: 1px solid #eee; background: white !important; }
-        .navbar-brand { color: var(--primary-color) !important; font-size: 1.2rem !important; font-weight: bold; line-height: 1.2; }
-        .nav-link { font-weight: 600; font-size: 0.85rem !important; text-transform: uppercase; color: var(--text-muted) !important; padding: 5px 12px !important; transition: 0.3s; }
-        
-        .sub-nav { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 66px; z-index: 999; padding: 14px 0; }
-        .sub-nav a { font-size: 0.85rem; text-transform: uppercase; font-weight: 700; color: var(--primary-color); text-decoration: none; margin: 0 15px; }
+        .navbar-brand { color: var(--primary-color) !important; font-size: 1.1rem !important; font-weight: bold; line-height: 1.2; }
+        .nav-link { font-weight: 600; font-size: 0.85rem !important; text-transform: uppercase; color: var(--text-muted) !important; padding: 8px 12px !important; }
+        .nav-link:hover { color: var(--primary-color) !important; }
 
+        /* SOTTO-NAVIGAZIONE */
+        .sub-nav { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 72px; z-index: 999; padding: 12px 0; }
+        .sub-nav a { font-size: 0.8rem; text-transform: uppercase; font-weight: 700; color: var(--primary-color); text-decoration: none; margin: 0 10px; }
+
+        /* HERO */
         .hero-history { 
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../immagini/storia-hero.jpg');
-            background-size: cover; background-position: center; height: 35vh; 
+            background-size: cover; background-position: center; height: 30vh; 
             display: flex; align-items: center; justify-content: center; color: white;
         }
 
+        /* LAYOUT TESTO E IMMAGINI */
         .section-padding { padding: 60px 0; }
         .bg-vetrina { background-color: var(--vetrina-bg); }
+        .section-title { color: var(--primary-color); font-weight: bold; margin-bottom: 2rem; border-bottom: 3px solid #ccd1d9; display: inline-block; padding-bottom: 10px; }
 
-        .section-title { 
-            color: var(--primary-color); font-weight: bold; position: relative; 
-            padding-bottom: 15px; margin-bottom: 2rem; font-size: 2rem;
-        }
-        .section-title::after { content: ''; width: 50px; height: 3px; background: #ccd1d9; position: absolute; bottom: 0; left: 0; }
+        /* L'abbraccio del testo */
+        .history-text-block { text-align: justify !important; line-height: 1.8; display: block; clear: both; }
+        .img-incorniciata { width: 40%; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .f-destra { float: right; margin-left: 25px; margin-bottom: 15px; }
+        .f-sinistra { float: left; margin-right: 25px; margin-bottom: 15px; }
 
-        .history-wrapper { text-align: justify !important; line-height: 1.8; color: var(--text-dark); display: block; }
-        
-        .img-incorniciata {
-            width: 42%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        .f-destra { float: right; margin-left: 30px; margin-bottom: 15px; }
-        .f-sinistra { float: left; margin-right: 30px; margin-bottom: 15px; }
-
-        /* STILE GALLERIA */
-        .gallery-thumb {
-            width: 100%;
-            aspect-ratio: 4/3;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
-        }
-        .gallery-thumb:hover { transform: scale(1.03); }
+        /* GALLERIA CENTRATA SOTTO IL BLOCCO */
+        .gallery-container { clear: both; padding-top: 30px; max-width: 1000px; margin: 0 auto; }
+        .gallery-thumb { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 8px; transition: 0.3s; }
+        .gallery-thumb:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
 
         .clearfix::after { content: ""; clear: both; display: table; }
 
-        @media (max-width: 768px) {
-            .img-incorniciata { width: 100%; float: none; margin: 0 0 20px 0; }
+        @media (max-width: 991px) {
+            .navbar-brand { font-size: 0.9rem !important; }
         }
 
-        footer { padding: 60px 0; background-color: var(--primary-color); color: white; }
+        @media (max-width: 768px) {
+            .img-incorniciata { width: 100%; float: none; margin: 0 0 20px 0; }
+            .sub-nav { display: none; }
+        }
+
+        footer { padding: 50px 0; background-color: var(--primary-color); color: white; }
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-1">
-    <div class="container-fluid px-4"> 
-        <a class="navbar-brand fw-bold" href="../index.html">Associazione Turistica Pro Loco<br>di Albano di Lucania APS</a>
+<nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
+    <div class="container-fluid px-3"> 
+        <a class="navbar-brand" href="../index.html">Associazione Turistica Pro Loco<br>di Albano di Lucania APS</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto align-items-center">
+            <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="chi-siamo.html">Chi siamo</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="color: var(--primary-color) !important;">Scopri Albano</a>
-                    <ul class="dropdown-menu border-0 shadow-sm">
-                        <li><a class="dropdown-item active-section" href="#">Un po' di storia <i class="fas fa-check-circle"></i></a></li>
+                    <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown" style="color: var(--primary-color) !important;">Scopri Albano</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item fw-bold" href="#">Un po' di storia <i class="fas fa-check text-primary"></i></a></li>
+                        <li><a class="dropdown-item" href="monumenti.html">Monumenti e Luoghi</a></li>
                     </ul>
                 </li>
+                <li class="nav-item"><a class="nav-link" href="cosa-fare.html">Cosa fare</a></li>
+                <li class="nav-item"><a class="nav-link" href="dove-dormire.html">Dormire</a></li>
+                <li class="nav-item"><a class="nav-link" href="dove-mangiare.html">Mangiare</a></li>
+                <li class="nav-item"><a class="nav-link" href="guestbook.html">Diario</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<div class="sub-nav d-none d-md-block text-center shadow-sm">
+<div class="sub-nav text-center shadow-sm d-none d-md-block">
     <div class="container">
         <a href="#origini">Le Origini</a>
         <a href="#rifoggio">Rifoggio</a>
@@ -110,49 +113,54 @@
 </div>
 
 <header class="hero-history">
-    <div class="container text-center text-white">
-        <h1 class="display-4 fw-bold">Un po' di storia</h1>
-    </div>
+    <h1 class="display-5 fw-bold text-center">Un po' di storia</h1>
 </header>
 
-<section id="origini" class="section-padding clearfix">
+<section id="origini" class="section-padding">
     <div class="container">
         <h2 class="section-title">Le Origini</h2>
-        <div class="history-wrapper">
+        
+        <div class="history-text-block">
             <img src="../immagini/storia_origini.jpg" class="img-incorniciata f-destra" alt="Le Origini">
-            <p>A causa della mancanza di documenti, le origini di Albano di Lucania sono incerte. Diverse sono le ipotesi sul suo nome, le più suggestive indicano la sua origine da un condottiero romano, albanese o greco, o da una principessa di nome Alba. Tuttavia, le ipotesi più attendibili lasciano supporre che il nome Albano derivi da una famiglia gentilizia romana...</p>
+            <p>A causa della mancanza di documenti, le origini di Albano di Lucania sono incerte. Diverse sono le ipotesi sul suo nome, le più suggestive indicano la sua origine da un condottiero romano, albanese o greco, o da una principessa di nome Alba. Tuttavia, le ipotesi più attendibili lasciano supporre che il nome Albano derivi da una famiglia gentilizia romana. Gli studi della toponomastica svolti da Flechia e confermati da Racioppi ci dicono che i nomi che terminano in “ano” ed “ana”, molto frequenti in Italia Meridionale, indicano proprietà o possesso da parte di una famiglia gentilizia. Albano, dunque, potrebbe essere stato posseduto dalla nobile famiglia romana Albius da cui sarebbe derivato il nome (Albius-Albianum-Albanum-Albano). Non si può neanche escludere che il nome Albano derivi dalla radice indoeuropea “alb-" che vuol dire monte” come accade per le “Alpi” e per i “Colli Albani”. Diversi sono gli elementi che lasciano dedurre che il territorio di Albano di Lucania sia stato abitato sin da tempi remoti. Francesco di Sanza, nel suo libro “Basilicata”, riferisce che poco lontano dal centro abitato di Albano di Lucania esistevano avanzi di mura antichissime costruite con massi enormi. Secondo alcune testimonianze orali, queste mura sarebbero state distrutte dai moderni mezzi di scavo durante i lavori di ammodernamento del centro abitato. Anche i segni lasciati dall'uomo sulla roccia lasciano supporre la sua presenza antichissima sul territorio di Albano.</p>
         </div>
 
-        <div class="row g-3 mt-4">
-            <div class="col-6 col-md-3"><img src="../immagini/origini_1.jpg" class="gallery-thumb" alt="Storia 1"></div>
-            <div class="col-6 col-md-3"><img src="../immagini/origini_2.jpg" class="gallery-thumb" alt="Storia 2"></div>
-            <div class="col-6 col-md-3"><img src="../immagini/origini_3.jpg" class="gallery-thumb" alt="Storia 3"></div>
-            <div class="col-6 col-md-3"><img src="../immagini/origini_4.jpg" class="gallery-thumb" alt="Storia 4"></div>
-            <div class="col-6 col-md-3"><img src="../immagini/origini_5.jpg" class="gallery-thumb" alt="Storia 5"></div>
-            <div class="col-6 col-md-3"><img src="../immagini/origini_6.jpg" class="gallery-thumb" alt="Storia 6"></div>
-            <div class="col-6 col-md-3"><img src="../immagini/origini_7.jpg" class="gallery-thumb" alt="Storia 7"></div>
-            <div class="col-6 col-md-3"><img src="../immagini/origini_8.jpg" class="gallery-thumb" alt="Storia 8"></div>
+        <div class="gallery-container">
+            <div class="row g-2 justify-content-center">
+                <div class="col-6 col-md-3"><img src="../immagini/origini_1.jpg" class="gallery-thumb"></div>
+                <div class="col-6 col-md-3"><img src="../immagini/origini_2.jpg" class="gallery-thumb"></div>
+                <div class="col-6 col-md-3"><img src="../immagini/origini_3.jpg" class="gallery-thumb"></div>
+                <div class="col-6 col-md-3"><img src="../immagini/origini_4.jpg" class="gallery-thumb"></div>
+                <div class="col-6 col-md-3"><img src="../immagini/origini_5.jpg" class="gallery-thumb"></div>
+                <div class="col-6 col-md-3"><img src="../immagini/origini_6.jpg" class="gallery-thumb"></div>
+                <div class="col-6 col-md-3"><img src="../immagini/origini_7.jpg" class="gallery-thumb"></div>
+                <div class="col-6 col-md-3"><img src="../immagini/origini_8.jpg" class="gallery-thumb"></div>
+            </div>
         </div>
     </div>
 </section>
 
-<section id="rifoggio" class="section-padding bg-vetrina clearfix">
+<section id="rifoggio" class="section-padding bg-vetrina">
     <div class="container">
         <h2 class="section-title">Bosco di Rifoggio</h2>
-        <div class="history-wrapper">
+        
+        <div class="history-text-block">
             <img src="../immagini/rifoggio.jpg" class="img-incorniciata f-sinistra" alt="Rifoggio">
-            <p>Una delle aree naturalistiche più belle della Basilicata, dove il tempo sembra essersi fermato. Il bosco di Rifoggio è un'oasi di pace e biodiversità che offre percorsi suggestivi tra alberi secolari e panorami mozzafiato.</p>
+            <p>Una delle aree naturalistiche più belle della Basilicata, dove il tempo sembra essersi fermato. Il bosco di Rifoggio è un'oasi di pace e biodiversità che offre percorsi suggestivi tra alberi secolari e panorami mozzafiato. In questo blocco, l'immagine è posizionata a sinistra e il testo le scorre intorno, mantenendo i bordi perfettamente allineati (giustificati) proprio come richiesto. Questo layout richiama lo stile editoriale delle riviste di viaggio, perfetto per valorizzare il racconto del nostro patrimonio naturale.</p>
+            <p>Le sfumature azzurre dello sfondo richiamano la coerenza cromatica della tua Vetrina, garantendo un'esperienza visiva fluida per l'utente che naviga tra le diverse sezioni del sito della Pro Loco.</p>
         </div>
 
-        <div class="row g-3 mt-4">
-            <div class="col-6 col-md-3"><img src="../immagini/rif_1.jpg" class="gallery-thumb" alt="Rifoggio 1"></div>
-            <div class="col-6 col-md-3"><img src="../immagini/rif_2.jpg" class="gallery-thumb" alt="Rifoggio 2"></div>
-            <div class="col-6 col-md-3"><img src="../immagini/rif_3.jpg" class="gallery-thumb" alt="Rifoggio 3"></div>
-            <div class="col-6 col-md-3"><img src="../immagini/rif_4.jpg" class="gallery-thumb" alt="Rifoggio 4"></div>
-            <div class="col-6 col-md-3"><img src="../immagini/rif_5.jpg" class="gallery-thumb" alt="Rifoggio 5"></div>
-            <div class="col-6 col-md-3"><img src="../immagini/rif_6.jpg" class="gallery-thumb" alt="Rifoggio 6"></div>
-            <div class="col-6 col-md-3"><img src="../immagini/rif_7.jpg" class="gallery-thumb" alt="Rifoggio 7"></div>
-            <div class="col-6 col-md-3"><img src="../immagini/rif_8.jpg" class="gallery-thumb" alt="Rifoggio 8"></div>
+        <div class="gallery-container">
+            <div class="row g-2 justify-content-center">
+                <div class="col-6 col-md-3"><img src="../immagini/rif_1.jpg" class="gallery-thumb"></div>
+                <div class="col-6 col-md-3"><img src="../immagini/rif_2.jpg" class="gallery-thumb"></div>
+                <div class="col-6 col-md-3"><img src="../immagini/rif_3.jpg" class="gallery-thumb"></div>
+                <div class="col-6 col-md-3"><img src="../immagini/rif_4.jpg" class="gallery-thumb"></div>
+                <div class="col-6 col-md-3"><img src="../immagini/rif_5.jpg" class="gallery-thumb"></div>
+                <div class="col-6 col-md-3"><img src="../immagini/rif_6.jpg" class="gallery-thumb"></div>
+                <div class="col-6 col-md-3"><img src="../immagini/rif_7.jpg" class="gallery-thumb"></div>
+                <div class="col-6 col-md-3"><img src="../immagini/rif_8.jpg" class="gallery-thumb"></div>
+            </div>
         </div>
     </div>
 </section>
